@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<style>
+    body{
+        background : url(../images/register_bg.webp) no-repeat center center fixed;
+        background-size: cover; 
+    }
+    .login-card{
+        background-color: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(30px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        position: relative;
+    }
+    .form-control{
+        background: rgba(255, 255, 255, 0.2);
+        height: 40px;
+        border: none;
+    }
+    .form-control:focus{
+        background: rgba(255, 255, 255, 0.3);
+
+    }
+    button.btn-login{
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #333;
+    }
+    button.btn-login:hover{
+        background-color: rgba(255, 255, 255, 1);
+        color: #000;
+    }
+
+    .input-group-text {
+    background-color:rgba(255, 255, 255, 0.2);
+    border: none;
+    color: rgb(255, 243, 243);
+    }
+    .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    opacity: 1;
+    }
+    .form-control, .form-select, .input-group-text {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border: none
+    }
+
+    .form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+    }
+
+    .form-select option {
+    background-color: #333; 
+    color: white;
+    }
+</style>
+<body>   
+    <div class="container vh-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-lg-5 col-md-8">
+                <div class="login-card p-5 rounded-4">
+                    <h3 class="mb-4 text-white text-center">Register</h3>
+                    <form action="">
+                        <div class="mb-3">
+                            <div class="input-group">
+                            <span class="input-group-text border-0">
+                                <i class="bi bi-person-plus-fill"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username" placeholder="Create username">
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                            </div>
+                        </div>    
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-envelope"></i>
+                                </span>
+                            <input type="email"class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-telephone"></i>
+                                </span>
+                                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-globe"></i>
+                                </span>
+                                    <select class="form-select" id="country">
+                                        <option selected disabled>Select your country </option>
+                                        <option value="QA">Qatar</option>
+                                        <option value="SY">syria</option>
+                                        <option value="SA">Sauudi</option>
+                                        <option value="TR">Turkey</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3 text-white">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-person-lock"></i>
+                                </span>
+                            <input type="password" class="form-control" id="password" placeholder="Create password">
+                        </div>
+                        </div>
+                        <div class="mb-3 text-white">
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password">
+                            </div>
+                        </div>
+                        <div class="d-grid mb-2">
+                        <button type="button" onclick="register()" class="btn btn-light btn-login rounded-3 fw-semibold">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBckNXYXcm8rptc1CEVTCMRSI4C-NV7OF4",
+    authDomain: "web-app-87bc7.firebaseapp.com",
+    projectId: "web-app-87bc7",
+    storageBucket: "web-app-87bc7.firebasestorage.app",
+    messagingSenderId: "635744543224",
+    appId: "1:635744543224:web:05a58f9813c38f7e04f60d"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+import {getAuth,createUserWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
+import {getFirestore,addDoc,collection} from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+window.register = async () => {
+  const username = document.getElementById("username").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const country = document.getElementById("country").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
+
+  
+  if (!username || !name || !email || !phone || !country || !password || !confirmPassword) {
+    alert("Please fill all fields");
+    return;
+  }
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
+    return;
+  }
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+    await addDoc(collection(db, "users"), {
+      uid: userCredential.user.uid,
+      username,
+      name,
+      email,
+      phone,
+      country
+    });
+
+setTimeout(() => {
+  window.location.href = "login.html";
+}, 800);
+  }
+   catch (error) {
+  if (error.code === "auth/email-already-in-use") {
+    alert("This email is already registered. Please login.");
+  } else if (error.code === "auth/invalid-email") {
+    alert("Invalid email format.");
+  } else if (error.code === "auth/weak-password") {
+    alert("Password is too weak.");
+  } else {
+    alert(error.message);
+  }
+}
+};
+
+</script>
+</body>
+</html>
