@@ -1,453 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — Qatta Travel</title>
-    <meta name="description" content="Learn about Qatta Travel — Qatar's premier travel platform connecting explorers with the best of the Pearl of the Gulf.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Contact Us - Premium Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <style>
-        * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
-        body { margin: 0; background: #07080f; color: white; overflow-x: hidden; }
+        :root {
+            --primary-green: #344a57;
+            --dark-blue: #344a60;
+            --soft-bg: #f8f1e7;
+            --accent-color: #344a70;
+        }
 
-        nav.main-nav {
-            position: fixed; top: 0; left: 0; right: 0;
-            z-index: 999;
-            background: rgba(7,8,15,0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            padding: 16px 40px;
+        body {
+            background: linear-gradient(135deg, #f8f1e7 0%, #ffffff 100%);
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            color: #333;
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-        .brand-logo { font-size: 1.3rem; font-weight: 800; }
-        .brand-logo span { color: #f0c040; }
-        .nav-links a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none; font-size: 0.9rem;
-            font-weight: 500; margin-left: 28px;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: #f0c040; }
-        .nav-btn {
-            background: linear-gradient(135deg, #d4a017, #f0c040);
-            color: #1a1a1a !important; border-radius: 50px;
-            padding: 8px 22px !important; font-weight: 700 !important;
+            padding: 40px 0;
         }
 
-        .hero {
-            padding-top: 64px;
-            height: 100vh;
-            background: linear-gradient(to bottom,
-                rgba(7,8,15,0.3) 0%,
-                rgba(7,8,15,0.6) 60%,
-                rgba(7,8,15,1) 100%),
-                url('../images/qatar-hotel.png') center / cover no-repeat;
+        .page-wrapper {
+            background-color: #ffffff;
+            max-width: 1100px;
+            margin: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .info-section {
+            padding: 60px;
+            background: #fff;
+        }
+
+        .main-title {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--dark-blue);
+            letter-spacing: -1px;
+        }
+
+        .subtitle-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item .icon-box {
+            width: 45px;
+            height: 45px;
+            background: #f0f7f0;
+            color: var(--primary-green);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
             justify-content: center;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+
+        .social-icons-left {
+            margin-top: 40px;
+        }
+
+        .social-icons-left a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            color: #555;
+            border-radius: 50%;
+            margin-right: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons-left a:hover {
+            background: var(--primary-green);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .form-section {
+            background-color: #fafafa;
+            padding: 0;
+            position: relative;
+        }
+
+        .top-image-container img {
+            width: 85%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom-left-radius: 150px;
+            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card-floating {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            margin: -100px auto 40px auto;
+        }
+
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group-custom i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            padding: 14px 15px 14px 45px;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control-custom:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            background: #f9fff9;
+        }
+
+        .btn-submit {
+            background: var(--dark-blue);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-green);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
+        }
+
+        .features-bar {
+            background: #fdfdfd;
+            border-top: 1px solid #f0f0f0;
+            padding: 35px 0;
+        }
+
+        .feature-item {
             text-align: center;
-            padding-left: 20px;
-            padding-right: 20px;
+            border-right: 1px solid #eee;
         }
 
-        .hero-badge {
-            background: rgba(240,192,64,0.15);
-            border: 1px solid rgba(240,192,64,0.3);
-            color: #f0c040;
-            font-size: 0.78rem;
-            font-weight: 700;
-            padding: 6px 18px;
-            border-radius: 50px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 22px;
+        .feature-item:last-child {
+            border: none;
         }
 
-        .hero h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { color: #f0c040; }
-        .hero p { color: rgba(255,255,255,0.65); max-width: 580px; font-size: 1.1rem; line-height: 1.7; margin-bottom: 36px; }
+        .feature-item i {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
 
-        .hero-cta { display: flex; gap: 14px; }
-        .btn-primary-gold {
-            background: linear-gradient(135deg, #d4a017, #f0c040);
-            color: #1a1a1a; border: none; border-radius: 50px;
-            padding: 14px 34px; font-weight: 700; font-size: 0.95rem;
-            cursor: pointer; text-decoration: none;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .btn-primary-gold:hover { opacity: 0.88; transform: translateY(-2px); color: #1a1a1a; }
-        .btn-outline-white {
-            background: transparent; color: white;
-            border: 1px solid rgba(255,255,255,0.3); border-radius: 50px;
-            padding: 14px 34px; font-weight: 600; font-size: 0.95rem;
-            cursor: pointer; text-decoration: none; transition: all 0.2s;
-        }
-        .btn-outline-white:hover { background: rgba(255,255,255,0.1); color: white; }
+        @media (max-width: 991px) {
+            .feature-item {
+                border-right: none;
+                margin-bottom: 30px;
+            }
 
-        .stats-bar {
-            display: flex; justify-content: center;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.03);
-        }
-        .stat-item {
-            flex: 1; max-width: 220px;
-            text-align: center; padding: 36px 20px;
-            border-right: 1px solid rgba(255,255,255,0.06);
-        }
-        .stat-item:last-child { border-right: none; }
-        .stat-item .num { font-size: 2.5rem; font-weight: 800; color: #f0c040; }
-        .stat-item .txt { font-size: 0.85rem; opacity: 0.55; margin-top: 4px; }
+            .info-section {
+                padding: 40px 20px;
+            }
 
-        .section { padding: 80px 80px; }
-        .section-label {
-            font-size: 0.75rem; text-transform: uppercase;
-            letter-spacing: 2px; color: #f0c040;
-            font-weight: 700; margin-bottom: 10px;
-        }
-        .section-heading { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin-bottom: 16px; }
-        .section-heading span { color: #f0c040; }
-        .section-sub { opacity: 0.6; max-width: 560px; line-height: 1.8; }
-
-        .mission-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 60px; align-items: center;
-        }
-        .mission-img-wrap {
-            position: relative; border-radius: 28px;
-            overflow: hidden; height: 450px;
-        }
-        .mission-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .mission-img-wrap::after {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(to top right, rgba(240,192,64,0.15), transparent);
-        }
-        .mission-badge {
-            position: absolute; bottom: 24px; left: 24px;
-            background: rgba(7,8,15,0.85); backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 16px; padding: 16px 22px; z-index: 2;
-        }
-        .mission-badge .num { font-size: 2rem; font-weight: 800; color: #f0c040; }
-        .mission-badge .lbl { font-size: 0.82rem; opacity: 0.6; }
-
-        .values-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; margin-top: 40px;
-        }
-        .value-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px; padding: 30px;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-        .value-card:hover { transform: translateY(-6px); border-color: rgba(240,192,64,0.3); }
-        .value-icon {
-            width: 54px; height: 54px; border-radius: 14px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem; margin-bottom: 16px;
-        }
-        .value-card h5 { font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
-        .value-card p { font-size: 0.88rem; opacity: 0.6; line-height: 1.7; margin: 0; }
-
-        .team-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 24px; margin-top: 40px;
-        }
-        .team-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 20px; padding: 30px 24px;
-            text-align: center; transition: transform 0.3s;
-        }
-        .team-card:hover { transform: translateY(-8px); }
-        .team-avatar {
-            width: 80px; height: 80px; border-radius: 50%;
-            margin: 0 auto 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; font-weight: 700; color: #1a1a1a;
-        }
-        .team-card .name { font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
-        .team-card .role { font-size: 0.82rem; opacity: 0.5; margin-bottom: 14px; }
-        .team-card .socials a {
-            color: rgba(255,255,255,0.4); font-size: 1rem;
-            margin: 0 5px; text-decoration: none; transition: color 0.2s;
-        }
-        .team-card .socials a:hover { color: #f0c040; }
-
-        .testimonials-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 24px; margin-top: 40px;
-        }
-        .testi-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px; padding: 28px; position: relative;
-        }
-        .testi-card .quote-icon {
-            font-size: 2.5rem; color: #f0c040; opacity: 0.4;
-            position: absolute; top: 16px; right: 20px; line-height: 1;
-        }
-        .testi-card p { font-size: 0.92rem; opacity: 0.75; line-height: 1.7; margin-bottom: 20px; }
-        .testi-card .testi-user { display: flex; align-items: center; gap: 12px; }
-        .testi-avatar {
-            width: 44px; height: 44px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 700; font-size: 1rem; color: #1a1a1a;
-        }
-        .testi-card .user-name { font-weight: 700; font-size: 0.9rem; }
-        .testi-card .user-loc { font-size: 0.78rem; opacity: 0.5; }
-        .stars { color: #f0c040; font-size: 0.75rem; margin-bottom: 3px; }
-
-        .cta-section {
-            margin: 0 80px 80px;
-            background: linear-gradient(135deg, #d4a017, #f0c040);
-            border-radius: 28px; padding: 60px;
-            display: flex; justify-content: space-between;
-            align-items: center; gap: 40px;
-        }
-        .cta-section h2 { font-size: 2rem; font-weight: 800; color: #1a1a1a; margin-bottom: 8px; }
-        .cta-section p { color: rgba(0,0,0,0.6); margin: 0; }
-        .cta-btn {
-            background: #1a1a1a; color: #f0c040;
-            border: none; border-radius: 50px;
-            padding: 16px 40px; font-weight: 800; font-size: 1rem;
-            cursor: pointer; white-space: nowrap; text-decoration: none;
-            transition: opacity 0.2s, transform 0.2s;
-        }
-        .cta-btn:hover { opacity: 0.85; transform: scale(1.03); color: #f0c040; }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 10px; }
-
-        @media (max-width: 900px) {
-            .mission-grid { grid-template-columns: 1fr; }
-            .values-grid { grid-template-columns: 1fr 1fr; }
-            .team-grid { grid-template-columns: 1fr 1fr; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .cta-section { flex-direction: column; text-align: center; padding: 40px 30px; }
-            .section { padding: 50px 24px; }
-            .cta-section { margin: 0 24px 50px; }
+            .top-image-container img {
+                width: 100%;
+                border-radius: 0;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="main-nav">
-        <div class="brand-logo">Qatta <span>Travel</span></div>
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="apartments.html">Apartments</a>
-            <a href="about.html" class="active">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="profile.html" class="nav-btn">My Profile</a>
-        </div>
-    </nav>
+    <div class="container">
+        <div class="page-wrapper">
+            <div class="row g-0">
+                <div class="col-lg-5 info-section">
+                    <h1 class="main-title">Contact Us</h1>
+                    <p class="subtitle-text">We're here to help you find your perfect stay in Qatar. Our team is
+                        available to answer all your questions.</p>
 
-    <section class="hero">
-        <div class="hero-badge">Qatar's #1 Travel Platform</div>
-        <h1>Travel Qatar with<br><span>Confidence</span> & Style</h1>
-        <p>Qatta Travel is your all-in-one gateway to discover, book, and experience the breathtaking beauty of the State of Qatar.</p>
-        <div class="hero-cta">
-            <a href="destinations.html" class="btn-primary-gold">Explore Destinations</a>
-            <a href="contact.html" class="btn-outline-white">Contact Us</a>
-        </div>
-    </section>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <small class="d-block text-muted">Call us</small>
+                            <strong>+974 1234 5678</strong>
+                        </div>
+                    </div>
 
-    <div class="stats-bar">
-        <div class="stat-item">
-            <div class="num">12K+</div>
-            <div class="txt">Happy Travelers</div>
-        </div>
-        <div class="stat-item">
-            <div class="num">200+</div>
-            <div class="txt">Destinations Listed</div>
-        </div>
-        <div class="stat-item">
-            <div class="num">150+</div>
-            <div class="txt">Premium Stays</div>
-        </div>
-        <div class="stat-item">
-            <div class="num">4.9</div>
-            <div class="txt">Average Rating</div>
-        </div>
-        <div class="stat-item">
-            <div class="num">5+</div>
-            <div class="txt">Years of Excellence</div>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <small class="d-block text-muted">Email us</small>
+                            <strong>info@qatarstays.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <small class="d-block text-muted">Visit us</small>
+                            <strong>West Bay, Doha, Qatar</strong>
+                        </div>
+                    </div>
+
+                    <div class="social-icons-left">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                    <div class="mt-5">
+                        <h6 class="fw-bold mb-3"><i class="far fa-clock me-2 text-#344a57;"></i>Working Hours</h6>
+                        <p class="text-muted small">Sun - Thu: 09:00 AM - 06:00 PM<br>Fri - Sat: Closed</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 form-section text-end">
+                    <div class="top-image-container d-none d-lg-block">
+                        <img src="../images/web photo/about.avif" alt="Support">
+                    </div>
+
+                    <div class="contact-card-floating text-start">
+                        <h5 class="fw-bold mb-4">Send Us a Message</h5>
+                        <form>
+                            <div class="input-group-custom">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control-custom" placeholder="Full Name">
+                            </div>
+
+                            <div class="input-group-custom">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-control-custom" placeholder="Email Address">
+                            </div>
+
+                            <div class="input-group-custom">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" class="form-control-custom" placeholder="Phone Number">
+                            </div>
+
+                            <div class="input-group-custom">
+                                <i class="fas fa-tag"></i>
+                                <select class="form-control-custom">
+                                    <option selected disabled>Select Subject</option>
+                                    <option>General Inquiry</option>
+                                    <option>Booking Support</option>
+                                </select>
+                            </div>
+
+                            <textarea class="form-control-custom mb-3" rows="4"
+                                placeholder="How can we help you?"></textarea>
+
+                            <button type="submit" class="btn-submit">
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-bar">
+                <div class="row g-0">
+                    <div class="col-lg-4 feature-item">
+                        <i class="bi bi-shield-fill" style="color: #344a57;"></i>
+                        <strong>Secure Booking</strong>
+                        <small class="text-muted d-block">Your data is always protected</small>
+                    </div>
+                    <div class="col-lg-4 feature-item">
+                        <i class="bi bi-lightning-charge-fill" style="color: #344a60;"></i>
+                        <strong>Fast Response</strong>
+                        <small class="text-muted d-block">We reply within 24 hours</small>
+                    </div>
+                    <div class="col-lg-4 feature-item">
+                        <i class="bi bi-clock" style="color: #344a70;"></i>
+                        <strong>24/7 Support</strong>
+                        <small class="text-muted d-block">Ready to assist you anytime</small>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <section class="section">
-        <div class="mission-grid">
-            <div>
-                <div class="section-label">Our Mission</div>
-                <h2 class="section-heading">Bringing the World to <span>Qatar</span></h2>
-                <p class="section-sub" style="margin-bottom: 24px;">
-                    At Qatta Travel, we believe every journey should be memorable, seamless, and rooted in authentic local experience. Since 2019, we've connected travelers from across the globe with the finest destinations, accommodations, and experiences that Qatar has to offer.
-                </p>
-                <p class="section-sub">
-                    From the futuristic skyline of Doha to the tranquil shores of Khor Al Adaid — we bring Qatar's hidden gems to life, one booking at a time.
-                </p>
-            </div>
-            <div class="mission-img-wrap">
-                <img src="../images/qatar-hotel.png" alt="Qatar Mission">
-                <div class="mission-badge">
-                    <div class="num">5+ Years</div>
-                    <div class="lbl">Serving travelers in Qatar</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="padding-top: 0;">
-        <div class="section-label">What Drives Us</div>
-        <h2 class="section-heading">Our Core <span>Values</span></h2>
-        <div class="values-grid">
-            <div class="value-card">
-                <div class="value-icon" style="background: rgba(240,192,64,0.12); color: #f0c040;">
-                    <i class="bi bi-stars"></i>
-                </div>
-                <h5>Excellence in Service</h5>
-                <p>We're committed to delivering 5-star experiences at every touchpoint — from the first search to the last check-out.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon" style="background: rgba(62,166,255,0.12); color: #3ea6ff;">
-                    <i class="bi bi-shield-check"></i>
-                </div>
-                <h5>Trust & Transparency</h5>
-                <p>No hidden fees, no surprises. We believe in honest pricing and clear communication with every customer.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon" style="background: rgba(46,194,126,0.12); color: #2ec27e;">
-                    <i class="bi bi-heart-pulse"></i>
-                </div>
-                <h5>Passion for Qatar</h5>
-                <p>We're locals who love this land. Our deep knowledge of Qatar lets us craft truly authentic travel experiences.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon" style="background: rgba(160,96,240,0.12); color: #a060f0;">
-                    <i class="bi bi-lightning-charge"></i>
-                </div>
-                <h5>Innovation First</h5>
-                <p>We continuously improve our platform with cutting-edge tech to make booking faster, smarter, and more intuitive.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon" style="background: rgba(255,107,107,0.12); color: #ff6b6b;">
-                    <i class="bi bi-globe2"></i>
-                </div>
-                <h5>Global Community</h5>
-                <p>We welcome travelers from every corner of the world. Diversity of culture makes every journey richer.</p>
-            </div>
-            <div class="value-card">
-                <div class="value-icon" style="background: rgba(240,192,64,0.12); color: #f0c040;">
-                    <i class="bi bi-leaf"></i>
-                </div>
-                <h5>Sustainable Travel</h5>
-                <p>We promote eco-conscious travel choices and partner with businesses that respect Qatar's natural heritage.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="padding-top: 0;">
-        <div class="section-label">The People Behind It</div>
-        <h2 class="section-heading">Meet Our <span>Team</span></h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #d4a017, #f0c040);">A</div>
-                <div class="name">Ahmed Al-Sayed</div>
-                <div class="role">CEO & Co-Founder</div>
-                <div class="socials">
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                    <a href="#"><i class="bi bi-twitter-x"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #1a6fc4, #3ea6ff);">S</div>
-                <div class="name">Sara Al-Rashid</div>
-                <div class="role">Head of Operations</div>
-                <div class="socials">
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #167a53, #2ec27e);">K</div>
-                <div class="name">Khalid Al-Murad</div>
-                <div class="role">Lead Developer</div>
-                <div class="socials">
-                    <a href="#"><i class="bi bi-github"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="team-avatar" style="background: linear-gradient(135deg, #6b3fa0, #a060f0);">L</div>
-                <div class="name">Layla Hassan</div>
-                <div class="role">UX Designer</div>
-                <div class="socials">
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="padding-top: 0;">
-        <div class="section-label">What People Say</div>
-        <h2 class="section-heading">Traveler <span>Reviews</span></h2>
-        <div class="testimonials-grid">
-            <div class="testi-card">
-                <div class="quote-icon">"</div>
-                <div class="stars">★★★★★</div>
-                <p>"Qatta Travel made our trip to Doha absolutely magical. Everything was perfectly organized and the team was so helpful throughout."</p>
-                <div class="testi-user">
-                    <div class="testi-avatar" style="background: linear-gradient(135deg, #d4a017, #f0c040);">M</div>
-                    <div>
-                        <div class="user-name">Mohammed R.</div>
-                        <div class="user-loc">From Turkey</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testi-card">
-                <div class="quote-icon">"</div>
-                <div class="stars">★★★★★</div>
-                <p>"Best travel platform I've used. Booked our hotel and tour package in minutes. The Pearl apartment was breathtaking!"</p>
-                <div class="testi-user">
-                    <div class="testi-avatar" style="background: linear-gradient(135deg, #1a6fc4, #3ea6ff);">A</div>
-                    <div>
-                        <div class="user-name">Aisha K.</div>
-                        <div class="user-loc">From UAE</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testi-card">
-                <div class="quote-icon">"</div>
-                <div class="stars">★★★★☆</div>
-                <p>"Very intuitive website. I was able to plan my entire Qatar trip in one afternoon. The desert safari recommendation was a highlight."</p>
-                <div class="testi-user">
-                    <div class="testi-avatar" style="background: linear-gradient(135deg, #167a53, #2ec27e);">J</div>
-                    <div>
-                        <div class="user-name">James L.</div>
-                        <div class="user-loc">From UK</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="cta-section">
-        <div>
-            <h2>Ready to Explore Qatar?</h2>
-            <p>Join 12,000+ travelers who've made Qatta their go-to Qatar travel companion.</p>
-        </div>
-        <a href="destinations.html" class="cta-btn">Start Your Journey</a>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
