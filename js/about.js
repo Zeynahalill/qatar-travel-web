@@ -1,5 +1,5 @@
 const reveals = document.querySelectorAll(".reveal");
-<script src="../js/main.js"></script>
+
 
 function revealOnScroll() {
     const windowHeight = window.innerHeight;
@@ -46,3 +46,19 @@ document.querySelectorAll(".stat-card, .feature-card").forEach(card => {
         }, 1500);
     });
 });
+
+gsap.from(".hero-title", {
+    y: 100,
+    opacity: 0,
+    duration: 1.5,
+    ease: "expo.out"
+});
+
+gsap.from(".hero-sub", {
+    y: 60,
+    opacity: 0,
+    duration: 1.2,
+    delay: 0.5,
+    ease: "expo.out"
+});
+

@@ -4,6 +4,9 @@ body {
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
+     background-attachment: fixed;
+      background-size: cover;
+
 }
 
 
@@ -48,3 +51,41 @@ body {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
 }
+.navbar-custom {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  color: white;
+}
+
+.navbar-custom a {
+  color: white;
+  text-decoration: none;
+}
+.big-title {
+  font-size: 120px;
+  font-weight: 800;
+  opacity: 0.25;
+  letter-spacing: 5px;
+}
+.navbar-custom {
+  position: fixed; /* absolute değil fixed yap */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: transparent !important;
+}
+
+.navbar-custom a,
+.navbar-custom h4 {
+  color: white !important;
+}
+
+
+
+
+
+
+
