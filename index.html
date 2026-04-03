@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,18 +25,18 @@
     }
 
     .overlay {
-      position:absolute;
-      width:100%;
-      height:100%;
- 
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      height:100%;
-      display:flex;
-      flex-direction:column;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
 
     }
@@ -46,7 +47,6 @@
       padding: 20px;
       max-width: 900px;
     }
-  
   </style>
 </head>
 
@@ -54,17 +54,15 @@
 
   <!--NAVBAR kısmı -->
   <nav class="d-flex justify-content-between align-items-center p-3 bg-white">
-  <h4 class="m-0">Qatta Travel</h4>
+    <h4 class="m-0">Qatta Travel</h4>
 
     <div>
-      <a class="mx-2">Destinations</a>
-      <a class="mx-2">Apartments</a>
-      <a class="mx-2">Contact Us</a>
-      <a class="mx-2">About Us</a>
-      <a class="mx-2">Login</a>
-      <a class="mx-2">Profile</a>
-
-
+      <a class="mx-2" href="pages/destinations.html">Destinations</a>
+      <a class="mx-2" href="pages/apartments.html">Apartments</a>
+      <a class="mx-2" href="pages/contact.html">Contact Us</a>
+      <a class="mx-2" href="pages/about.html">About Us</a>
+      <a class="mx-2" href="pages/login.html">Login</a>
+      <a class="mx-2" href="pages/profile.html">Profile</a>
     </div>
   </nav>
 
@@ -80,39 +78,42 @@
       <h1 class="display-3 fw-bold">WELCOME TO QATAR</h1>
 
       <!-- SEARCH BOX -->
-      <form action="search-results.html" method="GET" class="search-box mt-5 d-flex justify-content-between align-items-center shadow p-3">
+      <form action="search-results.html" method="GET"
+        class="search-box mt-5 d-flex justify-content-between align-items-center shadow p-3">
 
-  <div class="form-group flex-grow-1 mx-2">
-    <label for="location" class="small fw-bold text-dark">Konum</label>
-    <select class="form-control form-control-sm" id="location" name="location">
-      <option selected>Konum Seçin...</option>
-      <option value="doha">Doha</option>
-      <option value="lusail">Lusail</option>
-      <option value="alwakrah">Al Wakrah</option>
-    </select>
+        <div class="form-group flex-grow-1 mx-2">
+          <label for="location" class="small fw-bold text-dark">Konum</label>
+          <select class="form-control form-control-sm" id="location" name="location">
+            <option selected>Konum Seçin...</option>
+            <option value="doha">Doha</option>
+            <option value="lusail">Lusail</option>
+            <option value="alwakrah">Al Wakrah</option>
+          </select>
+        </div>
+
+        <div class="form-group flex-grow-1 mx-2">
+          <label for="checkin" class="small fw-bold text-dark">Giriş Tarihi</label>
+          <input type="date" class="form-control form-control-sm" id="checkin" name="checkin">
+        </div>
+
+        <div class="form-group flex-grow-1 mx-2">
+          <label for="checkout" class="small fw-bold text-dark">Çıkış Tarihi</label>
+          <input type="date" class="form-control form-control-sm" id="checkout" name="checkout">
+        </div>
+
+        <div class="form-group flex-grow-1 mx-2">
+          <label for="visitors" class="small fw-bold text-dark">Ziyaretçiler</label>
+          <input type="number" class="form-control form-control-sm" id="visitors" name="visitors" placeholder="0"
+            min="1">
+        </div>
+
+        <button type="submit" class="btn btn-dark rounded-circle px-3 py-2 ms-3">
+          Ara
+        </button>
+
+      </form>
+    </div>
   </div>
-
-  <div class="form-group flex-grow-1 mx-2">
-    <label for="checkin" class="small fw-bold text-dark">Giriş Tarihi</label>
-    <input type="date" class="form-control form-control-sm" id="checkin" name="checkin">
-  </div>
-
-  <div class="form-group flex-grow-1 mx-2">
-    <label for="checkout" class="small fw-bold text-dark">Çıkış Tarihi</label>
-    <input type="date" class="form-control form-control-sm" id="checkout" name="checkout">
-  </div>
-
-  <div class="form-group flex-grow-1 mx-2">
-    <label for="visitors" class="small fw-bold text-dark">Ziyaretçiler</label>
-    <input type="number" class="form-control form-control-sm" id="visitors" name="visitors" placeholder="0" min="1">
-  </div>
-
-  <button type="submit" class="btn btn-dark rounded-circle px-3 py-2 ms-3">
-    Ara
-  </button>
-
-</form>
-</div>
-</div>
 </body>
+
 </html>

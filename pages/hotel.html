@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Hotel Details — Qatta Travel</title>
+    <meta name="description" content="View detailed information, photos, amenities and book your stay at this Qatar property.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { font-family: 'Inter', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: #07080f; color: white; min-height: 100vh; }
+
+        /* ── NAVBAR ─────────────────────────────── */
+        nav.main-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+            background: rgba(7,8,15,0.85); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 14px 40px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand-logo { font-size: 1.25rem; font-weight: 800; text-decoration: none; color: white; }
+        .brand-logo span { color: #f0c040; }
+        .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; font-weight: 500; margin-left: 26px; transition: color 0.2s; }
+        .nav-links a:hover { color: #f0c040; }
+        .nav-btn { background: linear-gradient(135deg, #d4a017, #f0c040); color: #1a1a1a !important; border-radius: 50px; padding: 8px 20px !important; font-weight: 700 !important; }
+
+        /* ── HERO GALLERY ───────────────────────── */
+        .gallery { padding-top: 64px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 300px 300px; gap: 4px; max-height: 604px; overflow: hidden; }
+        .gallery .main-img { grid-row: span 2; position: relative; overflow: hidden; }
+        .gallery .side-img { position: relative; overflow: hidden; }
+        .gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; cursor: pointer; }
+        .gallery img:hover { transform: scale(1.04); }
+        .gallery .photo-count {
+            position: absolute; bottom: 16px; right: 16px;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px; padding: 6px 14px;
+            font-size: 0.8rem; font-weight: 600; cursor: pointer;
+        }
+
+        /* ── BREADCRUMB ─────────────────────────── */
+        .breadcrumb-bar {
+            padding: 16px 48px;
+            font-size: 0.8rem; color: rgba(255,255,255,0.4);
+        }
+        .breadcrumb-bar a { color: rgba(255,255,255,0.4); text-decoration: none; }
+        .breadcrumb-bar a:hover { color: #f0c040; }
+        .breadcrumb-bar span { color: rgba(255,255,255,0.7); }
+
+        /* ── MAIN LAYOUT ─────────────────────────── */
+        .detail-layout {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 32px;
+            padding: 0 48px 60px;
+            align-items: start;
+        }
+
+        /* ── PROPERTY HEADER ────────────────────── */
+        .prop-header { margin-bottom: 28px; }
+        .prop-tag {
+            display: inline-block; background: linear-gradient(135deg, #d4a017, #f0c040);
+            color: #1a1a1a; font-size: 0.7rem; font-weight: 700;
+            padding: 3px 12px; border-radius: 50px; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 12px;
+        }
+        .prop-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+        .prop-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 16px; }
+        .prop-meta .loc { font-size: 0.88rem; color: rgba(255,255,255,0.55); }
+        .prop-meta .loc i { color: #f0c040; margin-right: 4px; }
+        .stars-row { display: flex; gap: 3px; }
+        .star-filled { color: #f0c040; }
+        .star-empty  { color: rgba(255,255,255,0.2); }
+        .review-count { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+        .rating-num { font-size: 0.95rem; font-weight: 800; color: #f0c040; }
+
+        .prop-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .prop-badge {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; padding: 5px 14px;
+            font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.65);
+            display: flex; align-items: center; gap: 6px;
+        }
+        .prop-badge i { color: #f0c040; }
+
+        /* ── SECTION BLOCKS ──────────────────────── */
+        .detail-section { margin-bottom: 36px; }
+        .detail-section h3 {
+            font-size: 1rem; font-weight: 800;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 12px; margin-bottom: 20px;
+        }
+
+        /* Description */
+        .desc-text { font-size: 0.9rem; color: rgba(255,255,255,0.65); line-height: 1.8; }
+
+        /* Amenities */
+        .amenity-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .amenity-item {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px; padding: 12px 14px;
+            display: flex; align-items: center; gap: 10px;
+            font-size: 0.82rem; font-weight: 500;
+            color: rgba(255,255,255,0.7);
+        }
+        .amenity-item i { color: #f0c040; font-size: 1rem; }
+
+        /* Rooms */
+        .room-card {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px; padding: 20px; margin-bottom: 14px;
+            display: flex; justify-content: space-between; align-items: center;
+            transition: border-color 0.2s;
+        }
+        .room-card:hover { border-color: rgba(240,192,64,0.3); }
+        .room-info .room-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .room-info .room-desc { font-size: 0.78rem; color: rgba(255,255,255,0.45); }
+        .room-feats { display: flex; gap: 12px; margin-top: 8px; }
+        .room-feat { font-size: 0.73rem; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 4px; }
+        .room-price-col { text-align: right; }
+        .room-price { font-size: 1.2rem; font-weight: 800; color: #f0c040; }
+        .room-price-sub { font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+        .btn-select {
+            background: linear-gradient(135deg, #d4a017, #f0c040);
+            color: #1a1a1a; border: none; border-radius: 8px;
+            padding: 8px 20px; font-weight: 700; font-size: 0.82rem;
+            cursor: pointer; transition: opacity 0.2s;
+        }
+        .btn-select:hover { opacity: 0.85; }
+
+        /* Reviews */
+        .review-summary {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px; padding: 20px; margin-bottom: 20px;
+            display: flex; align-items: center; gap: 24px;
+        }
+        .review-score { font-size: 3rem; font-weight: 900; color: #f0c040; line-height: 1; }
+        .score-label { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+        .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+        .bar-label { font-size: 0.72rem; color: rgba(255,255,255,0.45); width: 70px; text-align: right; }
+        .bar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; background: #f0c040; border-radius: 4px; transition: width 1s ease; }
+        .bar-pct { font-size: 0.72rem; color: rgba(255,255,255,0.5); width: 30px; }
+
+        .review-card {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px; padding: 18px; margin-bottom: 14px;
+        }
+        .reviewer { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+        .reviewer-av {
+            width: 38px; height: 38px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 0.95rem; color: #1a1a1a;
+        }
+        .reviewer-name { font-weight: 700; font-size: 0.88rem; }
+        .reviewer-date { font-size: 0.72rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+        .review-text { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+        /* ── BOOKING CARD (sticky) ───────────────── */
+        .booking-card {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 26px;
+            position: sticky; top: 90px;
+        }
+        .booking-price { font-size: 1.6rem; font-weight: 900; color: #f0c040; margin-bottom: 4px; }
+        .booking-price span { font-size: 0.85rem; font-weight: 400; color: rgba(255,255,255,0.4); }
+        .booking-rating { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+
+        .form-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: rgba(255,255,255,0.4); margin-bottom: 6px; display: block; }
+        .form-field {
+            width: 100%; background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 10px;
+            padding: 11px 14px; color: white; font-size: 0.875rem;
+            outline: none; transition: border-color 0.2s; margin-bottom: 14px;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-field:focus { border-color: rgba(240,192,64,0.4); }
+        .form-field::placeholder { color: rgba(255,255,255,0.2); }
+        .dates-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .price-breakdown {
+            background: rgba(255,255,255,0.03); border-radius: 10px;
+            padding: 14px; margin: 16px 0;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .pb-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; margin-bottom: 8px; color: rgba(255,255,255,0.6); }
+        .pb-row:last-child { margin-bottom: 0; }
+        .pb-row.total { font-weight: 800; font-size: 0.9rem; color: white; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08); }
+
+        .book-btn {
+            width: 100%; background: linear-gradient(135deg, #d4a017, #f0c040);
+            color: #1a1a1a; border: none; border-radius: 12px;
+            padding: 14px; font-weight: 800; font-size: 0.95rem;
+            cursor: pointer; transition: opacity 0.2s, transform 0.2s;
+        }
+        .book-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+        .book-guarantee { text-align: center; font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 10px; }
+
+        /* ── MAP PLACEHOLDER ─────────────────────── */
+        .map-placeholder {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px; height: 200px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.3); font-size: 0.85rem; gap: 8px;
+        }
+        .map-placeholder i { font-size: 2rem; color: #f0c040; }
+
+        /* ── LIGHTBOX ────────────────────────────── */
+        .lightbox {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.94); z-index: 9999;
+            align-items: center; justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90vw; max-height: 85vh; border-radius: 10px; object-fit: contain; }
+        .lb-close { position: absolute; top: 20px; right: 28px; font-size: 1.8rem; cursor: pointer; color: white; }
+        .lb-prev, .lb-next {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,0.1); border: none; color: white;
+            padding: 12px 18px; font-size: 1.2rem; cursor: pointer;
+            border-radius: 8px; transition: background 0.2s;
+        }
+        .lb-prev { left: 20px; } .lb-next { right: 20px; }
+        .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.2); }
+
+        /* ── TOAST ───────────────────────────────── */
+        #toast {
+            position: fixed; bottom: 28px; right: 28px;
+            background: #1a1f2e; border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px; padding: 14px 20px;
+            display: flex; align-items: center; gap: 12px;
+            font-size: 0.875rem; font-weight: 500;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+            transform: translateY(80px); opacity: 0;
+            transition: all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+            z-index: 9999; pointer-events: none; min-width: 260px;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+        @media (max-width: 900px) {
+            .gallery { grid-template-columns: 1fr; grid-template-rows: 280px; }
+            .gallery .main-img { grid-row: span 1; }
+            .gallery .side-img { display: none; }
+            .detail-layout { grid-template-columns: 1fr; padding: 0 20px 40px; }
+            .booking-card { position: static; }
+            .amenity-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="main-nav">
+    <a class="brand-logo" href="../index.html">Qatta <span>Travel</span></a>
+    <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="destinations.html">Destinations</a>
+        <a href="apartments.html">Apartments</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="profile.html" class="nav-btn">My Profile</a>
+    </div>
+</nav>
+
+<!-- GALLERY -->
+<div class="gallery" id="gallery">
+    <div class="main-img">
+        <img id="img0" src="" alt="Main photo" onclick="openLightbox(0)">
+        <div class="photo-count" onclick="openLightbox(0)"><i class="bi bi-images me-1"></i> View all photos</div>
+    </div>
+    <div class="side-img"><img id="img1" src="" alt="Photo 2" onclick="openLightbox(1)"></div>
+    <div class="side-img"><img id="img2" src="" alt="Photo 3" onclick="openLightbox(2)"></div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar">
+    <a href="../index.html">Home</a> &nbsp;/&nbsp;
+    <a href="destinations.html" id="bc-section">Destinations</a> &nbsp;/&nbsp;
+    <span id="bc-name">Loading...</span>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="detail-layout">
+
+    <!-- LEFT ─── DETAILS -->
+    <div>
+
+        <!-- Header -->
+        <div class="prop-header">
+            <div class="prop-tag" id="prop-tag">Loading</div>
+            <h1 id="prop-name">Loading...</h1>
+            <div class="prop-meta">
+                <span class="loc"><i class="bi bi-geo-alt-fill"></i><span id="prop-loc"></span></span>
+                <div class="stars-row" id="stars-row">
+                    <i class="bi bi-star-fill star-filled"></i>
+                    <i class="bi bi-star-fill star-filled"></i>
+                    <i class="bi bi-star-fill star-filled"></i>
+                    <i class="bi bi-star-fill star-filled"></i>
+                    <i class="bi bi-star-fill star-filled"></i>
+                </div>
+                <span class="rating-num" id="rating-num">4.9</span>
+                <span class="review-count" id="review-count">(0 reviews)</span>
+            </div>
+            <div class="prop-badges" id="prop-badges"></div>
+        </div>
+
+        <!-- Description -->
+        <div class="detail-section">
+            <h3>About this property</h3>
+            <p class="desc-text" id="prop-desc"></p>
+        </div>
+
+        <!-- Amenities -->
+        <div class="detail-section">
+            <h3>Amenities & Facilities</h3>
+            <div class="amenity-grid" id="amenity-grid"></div>
+        </div>
+
+        <!-- Rooms -->
+        <div class="detail-section">
+            <h3>Available Room Types</h3>
+            <div id="rooms-list"></div>
+        </div>
+
+        <!-- Reviews -->
+        <div class="detail-section">
+            <h3>Guest Reviews</h3>
+            <div class="review-summary">
+                <div>
+                    <div class="review-score" id="rs-num">4.9</div>
+                    <div class="score-label">Exceptional</div>
+                </div>
+                <div style="flex:1;">
+                    <div class="bar-row"><span class="bar-label">Cleanliness</span><div class="bar-track"><div class="bar-fill" id="bar-clean"></div></div><span class="bar-pct" id="pct-clean"></span></div>
+                    <div class="bar-row"><span class="bar-label">Service</span><div class="bar-track"><div class="bar-fill" id="bar-service"></div></div><span class="bar-pct" id="pct-service"></span></div>
+                    <div class="bar-row"><span class="bar-label">Location</span><div class="bar-track"><div class="bar-fill" id="bar-location"></div></div><span class="bar-pct" id="pct-location"></span></div>
+                    <div class="bar-row"><span class="bar-label">Value</span><div class="bar-track"><div class="bar-fill" id="bar-value"></div></div><span class="bar-pct" id="pct-value"></span></div>
+                </div>
+            </div>
+            <div id="reviews-list"></div>
+        </div>
+
+        <!-- Location -->
+        <div class="detail-section">
+            <h3>Location</h3>
+            <div class="map-placeholder">
+                <i class="bi bi-geo-alt-fill"></i>
+                <span id="map-label">Qatar</span>
+                <small style="font-size:0.72rem;">Interactive map coming soon</small>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT ─── BOOKING CARD -->
+    <div>
+        <div class="booking-card">
+            <div class="booking-price" id="book-price">$0 <span>/ night</span></div>
+            <div class="booking-rating"><i class="bi bi-star-fill text-warning me-1"></i><span id="book-rating">4.9</span> &nbsp;·&nbsp; <span id="book-reviews">0 reviews</span></div>
+
+            <div class="dates-row">
+                <div>
+                    <label class="form-label">Check-in</label>
+                    <input class="form-field" type="date" id="checkin">
+                </div>
+                <div>
+                    <label class="form-label">Check-out</label>
+                    <input class="form-field" type="date" id="checkout">
+                </div>
+            </div>
+
+            <label class="form-label">Guests</label>
+            <select class="form-field" id="guests">
+                <option>1 Adult</option>
+                <option selected>2 Adults</option>
+                <option>2 Adults, 1 Child</option>
+                <option>3 Adults</option>
+                <option>4 Adults</option>
+            </select>
+
+            <div class="price-breakdown" id="price-breakdown">
+                <div class="pb-row"><span id="pb-nights">0 nights</span><span id="pb-subtotal">$0</span></div>
+                <div class="pb-row"><span>Taxes & fees (10%)</span><span id="pb-tax">$0</span></div>
+                <div class="pb-row total"><span>Total</span><span id="pb-total">$0</span></div>
+            </div>
+
+            <button class="book-btn" onclick="handleBooking()">Reserve Now</button>
+            <div class="book-guarantee"><i class="bi bi-shield-check me-1"></i>Free cancellation · No hidden fees</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <span class="lb-close" onclick="closeLightbox()">&times;</span>
+    <button class="lb-prev" onclick="lbNav(-1)"><i class="bi bi-chevron-left"></i></button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-next" onclick="lbNav(1)"><i class="bi bi-chevron-right"></i></button>
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+    <div id="toast-icon" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.9rem;flex-shrink:0;"></div>
+    <div id="toast-msg"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ═══════════════════ HOTEL DATA ════════════════════════ */
+const hotels = {
+    'doha-corniche': {
+        name: 'Doha Corniche',
+        tag: 'City Experience',
+        location: 'Doha, Qatar',
+        section: 'destinations',
+        sectionLabel: 'Destinations',
+        price: 200,
+        priceUnit: 'package',
+        rating: 4.8,
+        reviews: 210,
+        images: ['../images/qatar-hotel2.webp', '../images/qatar-hotel.png', '../images/qatar-hotel2.webp'],
+        badges: [
+            { icon: 'bi-award-fill', text: 'Best in City' },
+            { icon: 'bi-patch-check-fill', text: 'Verified Listing' },
+            { icon: 'bi-heart-fill', text: 'Guest Favorite' }
+        ],
+        description: 'The Doha Corniche is one of the most iconic waterfront promenades in the Middle East, stretching 7 kilometers along Doha Bay. Visitors can enjoy breathtaking views of the stunning Doha skyline, explore Souq Waqif, and marvel at the Museum of Islamic Art — all within walking distance. This city tour package includes guided experiences, premium transport, and curated local dining.',
+        amenities: [
+            { icon: 'bi-car-front-fill', text: 'Private Transport' },
+            { icon: 'bi-person-check-fill', text: 'Expert Guide' },
+            { icon: 'bi-cup-hot-fill', text: 'Meals Included' },
+            { icon: 'bi-camera-fill', text: 'Photo Stops' },
+            { icon: 'bi-globe2', text: 'Multi-language' },
+            { icon: 'bi-clock-fill', text: 'Flexible Schedule' },
+            { icon: 'bi-shield-check', text: 'Travel Insurance' },
+            { icon: 'bi-wifi', text: 'Free SIM Card' },
+            { icon: 'bi-bag-fill', text: 'Luggage Storage' }
+        ],
+        rooms: [
+            { name: 'Standard City Tour', desc: 'Full-day guided city experience', feats: ['8 hours', '2 adults', 'Lunch included'], price: 200 },
+            { name: 'Premium Package', desc: 'Extended tour with cultural sites', feats: ['12 hours', '4 adults', '2 meals'], price: 320 },
+            { name: 'VIP Experience', desc: 'Private guide, luxury transport', feats: ['Full day', 'Private', 'All meals'], price: 500 }
+        ],
+        ratingBars: { cleanliness: 98, service: 95, location: 100, value: 92 },
+        guestReviews: [
+            { name: 'Ahmed R.', country: 'Saudi Arabia', color: '#f0c040', stars: 5, date: 'March 2026', text: 'Absolutely stunning tour! The Corniche views at sunset were unforgettable. Our guide was knowledgeable and friendly.' },
+            { name: 'Sarah M.', country: 'United Kingdom', color: '#3ea6ff', stars: 5, date: 'February 2026', text: 'Perfect introduction to Doha. Loved exploring Souq Waqif and the Museum of Islamic Art. Highly recommended!' },
+            { name: 'Khalid T.', country: 'Turkey', color: '#2ec27e', stars: 4, date: 'January 2026', text: 'Great experience overall. The food stops were excellent. Only wish we had more time at the Pearl.' }
+        ]
+    },
+    'pearl-qatar': {
+        name: 'The Pearl-Qatar',
+        tag: 'Luxury Property',
+        location: 'The Pearl, Lusail, Qatar',
+        section: 'apartments',
+        sectionLabel: 'Apartments',
+        price: 350,
+        priceUnit: 'night',
+        rating: 4.9,
+        reviews: 180,
+        images: ['../images/qatar-hotel2.webp', '../images/qatar-hotel.png', '../images/qatar-hotel2.webp'],
+        badges: [
+            { icon: 'bi-gem', text: '5-Star Luxury' },
+            { icon: 'bi-patch-check-fill', text: 'Verified' },
+            { icon: 'bi-trophy-fill', text: 'Award Winning' }
+        ],
+        description: 'Experience unparalleled luxury at The Pearl-Qatar, Doha\'s most prestigious artificial island. This exclusive waterfront residence offers breathtaking marina views, world-class dining, and premium amenities. Located in the heart of Porto Arabia, guests enjoy direct beach access, luxury boutiques, and a vibrant culinary scene — all minutes from downtown Doha.',
+        amenities: [
+            { icon: 'bi-wifi', text: 'High-Speed WiFi' },
+            { icon: 'bi-droplet-fill', text: 'Private Pool' },
+            { icon: 'bi-car-front-fill', text: 'Valet Parking' },
+            { icon: 'bi-cup-hot-fill', text: 'Breakfast Included' },
+            { icon: 'bi-tv', text: 'Smart TV' },
+            { icon: 'bi-snow', text: 'Air Conditioning' },
+            { icon: 'bi-shield-lock-fill', text: '24/7 Security' },
+            { icon: 'bi-person-fill', text: 'Concierge Service' },
+            { icon: 'bi-water', text: 'Beach Access' }
+        ],
+        rooms: [
+            { name: 'Deluxe Marina View', desc: 'Studio with panoramic marina views', feats: ['1 King Bed', '2 Guests', '55 sqm'], price: 350 },
+            { name: 'Premium Suite', desc: 'Spacious 1BR with private balcony', feats: ['1 King Bed', '3 Guests', '90 sqm'], price: 550 },
+            { name: 'Penthouse Collection', desc: 'Ultimate luxury 3BR penthouse', feats: ['3 Bedrooms', '6 Guests', '200 sqm'], price: 1200 }
+        ],
+        ratingBars: { cleanliness: 99, service: 98, location: 97, value: 90 },
+        guestReviews: [
+            { name: 'James L.', country: 'United Kingdom', color: '#f0c040', stars: 5, date: 'March 2026', text: 'Absolutely world-class. The marina views from the suite were breathtaking. Staff were attentive and professional throughout our stay.' },
+            { name: 'Fatima A.', country: 'UAE', color: '#3ea6ff', stars: 5, date: 'February 2026', text: 'Best hotel experience in Qatar. The pool area is stunning and breakfast is exceptional. Will definitely return!' },
+            { name: 'Marco P.', country: 'Italy', color: '#a060f0', stars: 5, date: 'January 2026', text: 'Perfect location on the Pearl Island. Walking distance to great restaurants. The concierge service was outstanding.' }
+        ]
+    },
+    'al-wakrah-hotel': {
+        name: 'Al Wakrah Heritage Hotel',
+        tag: 'Heritage Stay',
+        location: 'Al Wakrah, Qatar',
+        section: 'apartments',
+        sectionLabel: 'Apartments',
+        price: 120,
+        priceUnit: 'night',
+        rating: 4.7,
+        reviews: 95,
+        images: ['../images/qatar-hotel.png', '../images/qatar-hotel2.webp', '../images/qatar-hotel.png'],
+        badges: [
+            { icon: 'bi-building-fill', text: 'Heritage Property' },
+            { icon: 'bi-patch-check-fill', text: 'Verified' }
+        ],
+        description: 'Immerse yourself in Qatari culture at Al Wakrah Heritage Hotel, a beautifully restored traditional property in Qatar\'s oldest coastal city. Featuring authentic Arabian architecture, wind towers, and traditional courtyard gardens, this boutique hotel offers a unique glimpse into Qatar\'s maritime heritage. Steps away from Al Wakrah Souq, the historic dhow harbor, and pristine beaches.',
+        amenities: [
+            { icon: 'bi-wifi', text: 'Free WiFi' },
+            { icon: 'bi-cup-hot-fill', text: 'Arabic Breakfast' },
+            { icon: 'bi-car-front-fill', text: 'Free Parking' },
+            { icon: 'bi-snow', text: 'Air Conditioning' },
+            { icon: 'bi-palette-fill', text: 'Art Gallery' },
+            { icon: 'bi-people-fill', text: 'Cultural Events' },
+            { icon: 'bi-water', text: 'Beach Nearby' },
+            { icon: 'bi-person-fill', text: 'Tour Desk' }
+        ],
+        rooms: [
+            { name: 'Traditional Room', desc: 'Authentic decor with courtyard view', feats: ['1 Queen Bed', '2 Guests', '35 sqm'], price: 120 },
+            { name: 'Heritage Suite', desc: 'Spacious suite with sea view', feats: ['1 King Bed', '2 Guests', '60 sqm'], price: 200 }
+        ],
+        ratingBars: { cleanliness: 95, service: 93, location: 96, value: 98 },
+        guestReviews: [
+            { name: 'Nora K.', country: 'Germany', color: '#f0c040', stars: 5, date: 'March 2026', text: 'A truly authentic experience. The hotel staff were incredibly warm and the traditional architecture is stunning. Perfect for exploring Al Wakrah.' },
+            { name: 'Hassan M.', country: 'Egypt', color: '#2ec27e', stars: 4, date: 'February 2026', text: 'Wonderful place to stay. Loved the traditional breakfast and the proximity to the souq. Great value for money.' }
+        ]
+    },
+    'museum-islamic-art': {
+        name: 'Museum of Islamic Art',
+        tag: 'Cultural Experience',
+        location: 'Museum Park, Doha, Qatar',
+        section: 'destinations',
+        sectionLabel: 'Destinations',
+        price: 60,
+        priceUnit: 'person',
+        rating: 4.8,
+        reviews: 302,
+        images: ['../images/qatar-hotel2.webp', '../images/qatar-hotel.png', '../images/qatar-hotel2.webp'],
+        badges: [
+            { icon: 'bi-globe2', text: 'World-Class Museum' },
+            { icon: 'bi-patch-check-fill', text: 'Official Partner' },
+            { icon: 'bi-star-fill', text: 'Top Rated' }
+        ],
+        description: 'The Museum of Islamic Art is one of the world\'s greatest repositories of Islamic art, housing a collection spanning 1,400 years and three continents. Designed by architect I.M. Pei and set on its own island off the Doha Corniche, the museum\'s iconic geometric facade is as breathtaking as its collection. Entry packages include guided audio tours, a visit to the museum café, and access to special exhibitions.',
+        amenities: [
+            { icon: 'bi-headphones', text: 'Audio Guide' },
+            { icon: 'bi-translate', text: 'Multi-language' },
+            { icon: 'bi-cup-hot-fill', text: 'Museum Café' },
+            { icon: 'bi-bag-fill', text: 'Gift Shop' },
+            { icon: 'bi-camera-fill', text: 'Photography OK' },
+            { icon: 'bi-accessibility', text: 'Accessible' },
+            { icon: 'bi-car-front-fill', text: 'Parking' },
+            { icon: 'bi-person-fill', text: 'Expert Tours' }
+        ],
+        rooms: [
+            { name: 'General Entry', desc: 'Full museum access + audio guide', feats: ['All galleries', 'Self-guided', 'Café access'], price: 60 },
+            { name: 'Guided Group Tour', desc: 'Expert-led tour, up to 10 people', feats: ['2-hour tour', 'Expert guide', 'Q&A session'], price: 120 },
+            { name: 'Private Experience', desc: 'Private curator-led after-hours tour', feats: ['3 hours', 'Private', 'Dinner included'], price: 400 }
+        ],
+        ratingBars: { cleanliness: 97, service: 96, location: 99, value: 94 },
+        guestReviews: [
+            { name: 'Emma W.', country: 'Australia', color: '#f0c040', stars: 5, date: 'March 2026', text: 'World-class museum in every sense. The architecture alone is worth the visit. The Islamic art collection is extraordinary — plan to spend at least 3 hours.' },
+            { name: 'Omar S.', country: 'Lebanon', color: '#3ea6ff', stars: 5, date: 'February 2026', text: 'One of the most impressive museums I\'ve visited anywhere in the world. The Pei building, the collection, the café views — all exceptional.' },
+            { name: 'Yuki T.', country: 'Japan', color: '#2ec27e', stars: 5, date: 'January 2026', text: 'The audio guide is excellent. I learned so much about Islamic art history. The café overlooking the Corniche is a highlight.' }
+        ]
+    },
+    'katara-village': {
+        name: 'Katara Cultural Village',
+        tag: 'Beach & Culture',
+        location: 'Lusail, Qatar',
+        section: 'destinations',
+        sectionLabel: 'Destinations',
+        price: 120,
+        priceUnit: 'package',
+        rating: 4.6,
+        reviews: 145,
+        images: ['../images/qatar-hotel.png', '../images/qatar-hotel2.webp', '../images/qatar-hotel.png'],
+        badges: [
+            { icon: 'bi-water', text: 'Beachfront' },
+            { icon: 'bi-music-note-beamed', text: 'Cultural Hub' },
+            { icon: 'bi-patch-check-fill', text: 'Verified' }
+        ],
+        description: 'Katara Cultural Village is a unique cultural destination that seamlessly blends traditional Qatari heritage with modern arts. Set along a beautiful beach, Katara hosts concerts, art exhibitions, film screenings, and cultural festivals year-round. The village features an opera house, amphitheater, mosque, and over 30 restaurants — making it one of Qatar\'s most vibrant gathering places.',
+        amenities: [
+            { icon: 'bi-water', text: 'Private Beach' },
+            { icon: 'bi-music-note-beamed', text: 'Live Events' },
+            { icon: 'bi-cup-hot-fill', text: '30+ Restaurants' },
+            { icon: 'bi-camera-fill', text: 'Art Galleries' },
+            { icon: 'bi-car-front-fill', text: 'Free Parking' },
+            { icon: 'bi-person-fill', text: 'Guided Tours' },
+            { icon: 'bi-film', text: 'Cinema' },
+            { icon: 'bi-balloon-fill', text: 'Family Friendly' }
+        ],
+        rooms: [
+            { name: 'Day Pass', desc: 'Full access to beach and village', feats: ['All day', 'Beach access', 'Gallery entry'], price: 120 },
+            { name: 'Cultural Package', desc: 'Day pass + guided tour + dinner', feats: ['All day', 'Expert guide', '3-course dinner'], price: 250 }
+        ],
+        ratingBars: { cleanliness: 93, service: 91, location: 96, value: 95 },
+        guestReviews: [
+            { name: 'Layla H.', country: 'Jordan', color: '#f0c040', stars: 5, date: 'March 2026', text: 'Katara is magical at sunset. The beach is beautiful and the architecture of the village is stunning. Great food options too.' },
+            { name: 'David K.', country: 'USA', color: '#3ea6ff', stars: 4, date: 'February 2026', text: 'Great cultural experience. Loved browsing the galleries and eating at the waterfront restaurants. A must-visit in Qatar.' }
+        ]
+    },
+    'khor-al-adaid': {
+        name: 'Khor Al Adaid Desert',
+        tag: 'Nature & Adventure',
+        location: 'Al Shahaniya, Qatar',
+        section: 'destinations',
+        sectionLabel: 'Destinations',
+        price: 150,
+        priceUnit: 'package',
+        rating: 5.0,
+        reviews: 88,
+        images: ['../images/qatar-hotel2.webp', '../images/qatar-hotel.png', '../images/qatar-hotel2.webp'],
+        badges: [
+            { icon: 'bi-stars', text: 'UNESCO Site' },
+            { icon: 'bi-award-fill', text: 'Top Rated' },
+            { icon: 'bi-patch-check-fill', text: 'Verified' }
+        ],
+        description: 'Khor Al Adaid — the Inland Sea — is one of Qatar\'s most spectacular natural wonders, where towering sand dunes meet the sea in a breathtaking landscape found nowhere else on Earth. This UNESCO-recognized natural reserve offers exhilarating dune bashing, camel rides, traditional Bedouin camp experiences, and stargazing under pristine desert skies. All packages include 4x4 transport from Doha.',
+        amenities: [
+            { icon: 'bi-car-front-fill', text: '4x4 Transport' },
+            { icon: 'bi-person-check-fill', text: 'Expert Guide' },
+            { icon: 'bi-cup-hot-fill', text: 'Bedouin Dinner' },
+            { icon: 'bi-camera-fill', text: 'Photography' },
+            { icon: 'bi-moon-stars-fill', text: 'Stargazing' },
+            { icon: 'bi-bicycle', text: 'Camel Ride' },
+            { icon: 'bi-tent-fill', text: 'Camp Setup' },
+            { icon: 'bi-shield-check', text: 'Safety Gear' },
+            { icon: 'bi-water', text: 'Water & Snacks' }
+        ],
+        rooms: [
+            { name: 'Day Safari', desc: 'Dune bashing + sea visit + BBQ lunch', feats: ['8 hours', '4x4 included', 'Lunch'], price: 150 },
+            { name: 'Overnight Camp', desc: 'Full experience + Bedouin camp overnight', feats: ['24 hours', 'All meals', 'Tent & fire'], price: 300 }
+        ],
+        ratingBars: { cleanliness: 100, service: 99, location: 100, value: 97 },
+        guestReviews: [
+            { name: 'Mohammed A.', country: 'Pakistan', color: '#f0c040', stars: 5, date: 'March 2026', text: 'The most incredible natural experience in Qatar. Where the dunes meet the sea is something you have to see to believe. The overnight camp was magical.' },
+            { name: 'Lisa B.', country: 'Canada', color: '#3ea6ff', stars: 5, date: 'February 2026', text: 'Absolutely unforgettable. The landscape is unlike anything I\'ve seen. Our guide was fantastic and the Bedouin dinner was delicious.' },
+            { name: 'Reza M.', country: 'Iran', color: '#2ec27e', stars: 5, date: 'January 2026', text: 'The highlight of our Qatar trip without a doubt. Stargazing at the Inland Sea is a once-in-a-lifetime experience.' }
+        ]
+    }
+};
+
+/* ═══════════════════ RENDER PAGE ═══════════════════════ */
+const params = new URLSearchParams(location.search);
+const hotelId = params.get('id') || 'pearl-qatar';
+const hotel = hotels[hotelId];
+
+if (!hotel) {
+    document.body.innerHTML = '<div style="text-align:center;padding:200px 0;color:rgba(255,255,255,0.5);">Property not found. <a href="destinations.html" style="color:#f0c040;">Go back</a></div>';
+} else {
+    // Page title
+    document.getElementById('page-title').textContent = hotel.name + ' — Qatta Travel';
+
+    // Gallery images
+    document.getElementById('img0').src = hotel.images[0];
+    document.getElementById('img1').src = hotel.images[1];
+    document.getElementById('img2').src = hotel.images[2];
+
+    // Breadcrumb
+    const bcSection = document.getElementById('bc-section');
+    bcSection.textContent = hotel.sectionLabel;
+    bcSection.href = hotel.section + '.html';
+    document.getElementById('bc-name').textContent = hotel.name;
+
+    // Header
+    document.getElementById('prop-tag').textContent = hotel.tag;
+    document.getElementById('prop-name').textContent = hotel.name;
+    document.getElementById('prop-loc').textContent = hotel.location;
+    document.getElementById('rating-num').textContent = hotel.rating;
+    document.getElementById('review-count').textContent = `(${hotel.reviews} reviews)`;
+
+    // Star rendering
+    const starsRow = document.getElementById('stars-row');
+    starsRow.innerHTML = '';
+    for (let i = 1; i <= 5; i++) {
+        const star = document.createElement('i');
+        star.className = i <= Math.round(hotel.rating) ? 'bi bi-star-fill star-filled' : 'bi bi-star star-empty';
+        starsRow.appendChild(star);
+    }
+
+    // Badges
+    document.getElementById('prop-badges').innerHTML = hotel.badges.map(b =>
+        `<div class="prop-badge"><i class="bi ${b.icon}"></i>${b.text}</div>`
+    ).join('');
+
+    // Description
+    document.getElementById('prop-desc').textContent = hotel.description;
+
+    // Amenities
+    document.getElementById('amenity-grid').innerHTML = hotel.amenities.map(a =>
+        `<div class="amenity-item"><i class="bi ${a.icon}"></i>${a.text}</div>`
+    ).join('');
+
+    // Rooms
+    document.getElementById('rooms-list').innerHTML = hotel.rooms.map(r => `
+        <div class="room-card">
+            <div class="room-info">
+                <div class="room-name">${r.name}</div>
+                <div class="room-desc">${r.desc}</div>
+                <div class="room-feats">
+                    ${r.feats.map(f => `<span class="room-feat"><i class="bi bi-check2 text-warning"></i>${f}</span>`).join('')}
+                </div>
+            </div>
+            <div class="room-price-col">
+                <div class="room-price">$${r.price}</div>
+                <div class="room-price-sub">/ ${hotel.priceUnit}</div>
+                <button class="btn-select" onclick="selectRoom(${r.price})">Select</button>
+            </div>
+        </div>
+    `).join('');
+
+    // Rating bars
+    const bars = hotel.ratingBars;
+    setTimeout(() => {
+        ['clean','service','location','value'].forEach((key, i) => {
+            const mapKey = ['cleanliness','service','location','value'][i];
+            const val = bars[mapKey];
+            document.getElementById('bar-' + key).style.width = val + '%';
+            document.getElementById('pct-' + key).textContent = (val/20).toFixed(1);
+        });
+    }, 200);
+    document.getElementById('rs-num').textContent = hotel.rating;
+
+    // Reviews
+    document.getElementById('reviews-list').innerHTML = hotel.guestReviews.map(r => `
+        <div class="review-card">
+            <div class="reviewer">
+                <div class="reviewer-av" style="background:${r.color};">${r.name[0]}</div>
+                <div>
+                    <div class="reviewer-name">${r.name} — ${r.country}</div>
+                    <div class="reviewer-date">${r.date}</div>
+                </div>
+                <div style="margin-left:auto;color:#f0c040;font-size:0.8rem;">${'★'.repeat(r.stars)}${'☆'.repeat(5-r.stars)}</div>
+            </div>
+            <p class="review-text">${r.text}</p>
+        </div>
+    `).join('');
+
+    // Booking card
+    document.getElementById('book-price').innerHTML = `$${hotel.price} <span>/ ${hotel.priceUnit}</span>`;
+    document.getElementById('book-rating').textContent = hotel.rating;
+    document.getElementById('book-reviews').textContent = hotel.reviews + ' reviews';
+
+    // Map label
+    document.getElementById('map-label').textContent = hotel.location;
+
+    // Set default dates (today + 3 nights)
+    const today = new Date();
+    const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+    const checkout = new Date(today); checkout.setDate(today.getDate() + 3);
+    document.getElementById('checkin').value  = tomorrow.toISOString().split('T')[0];
+    document.getElementById('checkout').value = checkout.toISOString().split('T')[0];
+    calcPrice();
+}
+
+/* ═══════════════════ PRICE CALCULATOR ══════════════════ */
+function calcPrice() {
+    const cin  = new Date(document.getElementById('checkin').value);
+    const cout = new Date(document.getElementById('checkout').value);
+    const nights = Math.max(1, Math.round((cout - cin) / 86400000));
+    const base = hotel ? hotel.price : 0;
+    const subtotal = base * nights;
+    const tax = Math.round(subtotal * 0.1);
+    const total = subtotal + tax;
+
+    document.getElementById('pb-nights').textContent  = `${nights} night${nights > 1 ? 's' : ''} × $${base}`;
+    document.getElementById('pb-subtotal').textContent = `$${subtotal}`;
+    document.getElementById('pb-tax').textContent      = `$${tax}`;
+    document.getElementById('pb-total').textContent    = `$${total}`;
+}
+document.getElementById('checkin')?.addEventListener('change', calcPrice);
+document.getElementById('checkout')?.addEventListener('change', calcPrice);
+
+/* ═══════════════════ ROOM SELECTION ════════════════════ */
+function selectRoom(price) {
+    showToast(`Room selected — $${price} per night`, 'success');
+}
+
+/* ═══════════════════ BOOKING ════════════════════════════ */
+function handleBooking() {
+    const cin  = document.getElementById('checkin').value;
+    const cout = document.getElementById('checkout').value;
+    if (!cin || !cout) { showToast('Please select your dates', 'warn'); return; }
+    if (new Date(cout) <= new Date(cin)) { showToast('Check-out must be after check-in', 'error'); return; }
+    const btn = document.querySelector('.book-btn');
+    btn.textContent = 'Processing...';
+    btn.disabled = true;
+    setTimeout(() => {
+        btn.textContent = 'Reserve Now';
+        btn.disabled = false;
+        showToast('Booking request sent! Check your email for confirmation.', 'success');
+    }, 1800);
+}
+
+/* ═══════════════════ LIGHTBOX ═══════════════════════════ */
+let lbImages = [];
+let lbIndex  = 0;
+
+function openLightbox(idx) {
+    if (!hotel) return;
+    lbImages = hotel.images;
+    lbIndex = idx;
+    document.getElementById('lb-img').src = lbImages[lbIndex];
+    document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+function lbNav(dir) {
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    document.getElementById('lb-img').src = lbImages[lbIndex];
+}
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+});
+
+/* ═══════════════════ TOAST ══════════════════════════════ */
+function showToast(msg, type = 'success') {
+    const toast = document.getElementById('toast');
+    const icon  = document.getElementById('toast-icon');
+    const config = {
+        success: { bg: 'rgba(46,194,126,0.15)', color: '#2ec27e', ic: 'bi-check-circle-fill' },
+        error:   { bg: 'rgba(255,100,100,0.15)', color: '#ff6464', ic: 'bi-x-circle-fill' },
+        info:    { bg: 'rgba(62,166,255,0.15)',  color: '#3ea6ff', ic: 'bi-info-circle-fill' },
+        warn:    { bg: 'rgba(240,192,64,0.15)',  color: '#f0c040', ic: 'bi-exclamation-circle-fill' }
+    };
+    const c = config[type];
+    icon.style.background = c.bg; icon.style.color = c.color;
+    icon.innerHTML = `<i class="bi ${c.ic}"></i>`;
+    document.getElementById('toast-msg').textContent = msg;
+    toast.style.transform = 'translateY(0)'; toast.style.opacity = '1';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => { toast.style.transform = 'translateY(80px)'; toast.style.opacity = '0'; }, 3200);
+}
+</script>
+</body>
+</html>
