@@ -4,428 +4,213 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us — Qatta Travel</title>
-    <meta name="description"
-        content="Get in touch with Qatta Travel. We're here to help you plan your perfect Qatar adventure.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <title>Contact Us - Premium Design</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
+        :root {
+            --primary-green: #344a57;
+            --dark-blue: #344a60;
+            --soft-bg: #f8f1e7;
+            --accent-color: #344a70;
         }
 
         body {
-            margin: 0;
-            background: #07080f;
-            color: white;
+            background: linear-gradient(135deg, #f8f1e7 0%, #ffffff 100%);
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            color: #333;
             min-height: 100vh;
-        }
-
-        /* NAVBAR */
-        nav.main-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 999;
-            background: rgba(7, 8, 15, 0.85);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-logo {
-            font-size: 1.3rem;
-            font-weight: 800;
-        }
-
-        .brand-logo span {
-            color: #f0c040;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-left: 28px;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #f0c040;
-        }
-
-        .nav-btn {
-            background: linear-gradient(135deg, #d4a017, #f0c040);
-            color: #1a1a1a !important;
-            border-radius: 50px;
-            padding: 8px 22px !important;
-            font-weight: 700 !important;
-        }
-
-        /* PAGE HERO */
-        .page-hero {
-            padding-top: 64px;
-            height: 40vh;
-            background: linear-gradient(135deg, rgba(7, 8, 15, 0.85), rgba(20, 20, 50, 0.7)),
-                url('../images/register_bg.webp') center / cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .page-hero h1 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .page-hero h1 span {
-            color: #f0c040;
-        }
-
-        .page-hero p {
-            opacity: 0.6;
-            max-width: 500px;
-        }
-
-        /* CONTACT GRID */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            padding: 60px 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Glass panel */
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-        }
-
-        /* Left: Contact Info */
-        .contact-info h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .contact-info h2 span {
-            color: #f0c040;
-        }
-
-        .contact-info p {
-            opacity: 0.6;
-            margin-bottom: 36px;
-            line-height: 1.7;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 26px;
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 14px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            flex-shrink: 0;
+            padding: 40px 0;
         }
 
-        .info-icon.gold {
-            background: rgba(240, 192, 64, 0.15);
-            color: #f0c040;
+        .page-wrapper {
+            background-color: #ffffff;
+            max-width: 1100px;
+            margin: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .info-icon.blue {
-            background: rgba(62, 166, 255, 0.15);
-            color: #3ea6ff;
+        .info-section {
+            padding: 60px;
+            background: #fff;
         }
 
-        .info-icon.green {
-            background: rgba(46, 194, 126, 0.15);
-            color: #2ec27e;
+        .main-title {
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--dark-blue);
+            letter-spacing: -1px;
         }
 
-        .info-icon.purple {
-            background: rgba(160, 96, 240, 0.15);
-            color: #a060f0;
+        .subtitle-text {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 40px;
         }
 
-        .info-text .label {
-            font-size: 0.78rem;
-            opacity: 0.5;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 3px;
-        }
-
-        .info-text .value {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        /* Social links */
-        .social-row {
+        .contact-item {
             display: flex;
-            gap: 12px;
-            margin-top: 30px;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
         }
 
-        .social-btn {
-            width: 44px;
-            height: 44px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item .icon-box {
+            width: 45px;
+            height: 45px;
+            background: #f0f7f0;
+            color: var(--primary-green);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
+            margin-right: 20px;
+            font-size: 18px;
+        }
+
+        .social-icons-left {
+            margin-top: 40px;
+        }
+
+        .social-icons-left a {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f5f5;
+            color: #555;
+            border-radius: 50%;
+            margin-right: 12px;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
-        .social-btn:hover {
-            background: rgba(240, 192, 64, 0.15);
-            border-color: #f0c040;
-            color: #f0c040;
-            transform: translateY(-3px);
-        }
-
-        /* Right: Form */
-        .contact-form h2 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .contact-form h2 span {
-            color: #f0c040;
-        }
-
-        .contact-form .subtitle {
-            opacity: 0.6;
-            margin-bottom: 28px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 14px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        .form-group label {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-bottom: 8px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 13px 16px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
+        .social-icons-left a:hover {
+            background: var(--primary-green);
             color: white;
-            font-size: 0.92rem;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.2s, background 0.2s;
-            outline: none;
+            transform: translateY(-5px);
         }
 
-        .form-input:focus {
-            border-color: rgba(240, 192, 64, 0.5);
-            background: rgba(255, 255, 255, 0.1);
+        .form-section {
+            background-color: #fafafa;
+            padding: 0;
+            position: relative;
         }
 
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
+        .top-image-container img {
+            width: 85%;
+            height: 280px;
+            object-fit: cover;
+            border-bottom-left-radius: 150px;
+            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        textarea.form-input {
-            resize: vertical;
-            min-height: 130px;
+        .contact-card-floating {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            margin: -100px auto 40px auto;
         }
 
-        .form-input option {
-            background: #0d0e1a;
+        .input-group-custom {
+            position: relative;
+            margin-bottom: 20px;
         }
 
-        .submit-btn {
+        .input-group-custom i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .form-control-custom {
             width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #d4a017, #f0c040);
-            color: #1a1a1a;
+            padding: 14px 15px 14px 45px;
+            border: 1.5px solid #eee;
+            border-radius: 12px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control-custom:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            background: #f9fff9;
+        }
+
+        .btn-submit {
+            background: var(--dark-blue);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 600;
             border: none;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: opacity 0.2s, transform 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin-top: 6px;
+            transition: all 0.3s ease;
         }
 
-        .submit-btn:hover {
-            opacity: 0.88;
-            transform: translateY(-2px);
+        .btn-submit:hover {
+            background: var(--primary-green);
+            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
         }
 
-        /* Success toast */
-        .toast-success {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #167a53, #2ec27e);
-            color: white;
-            padding: 16px 24px;
-            border-radius: 14px;
-            font-weight: 600;
-            display: none;
-            align-items: center;
-            gap: 12px;
-            z-index: 9999;
-            animation: slideIn 0.4s ease;
+        .features-bar {
+            background: #fdfdfd;
+            border-top: 1px solid #f0f0f0;
+            padding: 35px 0;
         }
 
-        .toast-success.show {
-            display: flex;
+        .feature-item {
+            text-align: center;
+            border-right: 1px solid #eee;
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(100px);
-                opacity: 0;
+        .feature-item:last-child {
+            border: none;
+        }
+
+        .feature-item i {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        @media (max-width: 991px) {
+            .feature-item {
+                border-right: none;
+                margin-bottom: 30px;
             }
 
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 0 80px 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .faq-title {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 24px;
-        }
-
-        .faq-title span {
-            color: #f0c040;
-        }
-
-        .faq-item {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            margin-bottom: 12px;
-            overflow: hidden;
-        }
-
-        .faq-q {
-            padding: 18px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-        }
-
-        .faq-q:hover {
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .faq-q .arrow {
-            transition: transform 0.3s;
-            font-size: 0.85rem;
-            opacity: 0.5;
-        }
-
-        .faq-a {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.35s ease, padding 0.3s;
-            padding: 0 22px;
-            font-size: 0.9rem;
-            opacity: 0.65;
-            line-height: 1.7;
-        }
-
-        .faq-item.open .faq-a {
-            max-height: 200px;
-            padding: 0 22px 18px;
-        }
-
-        .faq-item.open .arrow {
-            transform: rotate(180deg);
-        }
-
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-        }
-
-        @media (max-width: 900px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-                padding: 40px 24px;
+            .info-section {
+                padding: 40px 20px;
             }
 
-            .faq-section {
-                padding: 0 24px 40px;
-            }
-
-            .form-row {
-                flex-direction: column;
-                gap: 0;
+            .top-image-container img {
+                width: 100%;
+                border-radius: 0;
             }
         }
     </style>
@@ -433,190 +218,116 @@
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="main-nav">
-        <div class="brand-logo">Qatta <span>Travel</span></div>
-        <div class="nav-links">
-            <a href="../index.html">Home</a>
-            <a href="destinations.html">Destinations</a>
-            <a href="apartments.html">Apartments</a>
-            <a href="about.html">About</a>
-            <a href="contact.html" class="active">Contact</a>
-            <a href="profile.html" class="nav-btn">My Profile</a>
-        </div>
-    </nav>
+    <div class="container">
+        <div class="page-wrapper">
+            <div class="row g-0">
+                <div class="col-lg-5 info-section">
+                    <h1 class="main-title">Contact Us</h1>
+                    <p class="subtitle-text">We're here to help you find your perfect stay in Qatar. Our team is
+                        available to answer all your questions.</p>
 
-    <!-- HERO -->
-    <div class="page-hero">
-        <h1>Get in <span>Touch</span></h1>
-        <p>Have a question or need help planning your trip? Our team is ready to assist you.</p>
-    </div>
-
-    <!-- CONTACT GRID -->
-    <div class="contact-grid">
-
-        <!-- LEFT: Info -->
-        <div class="glass contact-info">
-            <h2>We'd Love to <span>Hear From You</span></h2>
-            <p>Whether you have a question about destinations, bookings, pricing, or anything else — our team is all
-                ears.</p>
-
-            <div class="info-item">
-                <div class="info-icon gold"><i class="bi bi-geo-alt-fill"></i></div>
-                <div class="info-text">
-                    <div class="label">Our Location</div>
-                    <div class="value">West Bay, Doha, Qatar</div>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-icon blue"><i class="bi bi-telephone-fill"></i></div>
-                <div class="info-text">
-                    <div class="label">Phone</div>
-                    <div class="value">+974 4444 5555</div>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-icon green"><i class="bi bi-envelope-fill"></i></div>
-                <div class="info-text">
-                    <div class="label">Email</div>
-                    <div class="value">hello@qatta.travel</div>
-                </div>
-            </div>
-
-            <div class="info-item">
-                <div class="info-icon purple"><i class="bi bi-clock-fill"></i></div>
-                <div class="info-text">
-                    <div class="label">Working Hours</div>
-                    <div class="value">Sun – Thu: 9:00 AM – 6:00 PM AST</div>
-                </div>
-            </div>
-
-            <div class="social-row">
-                <a href="#" class="social-btn"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="social-btn"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" class="social-btn"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="social-btn"><i class="bi bi-whatsapp"></i></a>
-                <a href="#" class="social-btn"><i class="bi bi-linkedin"></i></a>
-            </div>
-        </div>
-
-        <!-- RIGHT: Form -->
-        <div class="glass contact-form">
-            <h2>Send a <span>Message</span></h2>
-            <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
-
-            <form id="contactForm" onsubmit="handleSubmit(event)">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input id="firstName" class="form-input" type="text" placeholder="Obay" required>
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <small class="d-block text-muted">Call us</small>
+                            <strong>+974 1234 5678</strong>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input id="lastName" class="form-input" type="text" placeholder="Al-Zin" required>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <small class="d-block text-muted">Email us</small>
+                            <strong>info@qatarstays.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <small class="d-block text-muted">Visit us</small>
+                            <strong>West Bay, Doha, Qatar</strong>
+                        </div>
+                    </div>
+
+                    <div class="social-icons-left">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+
+                    <div class="mt-5">
+                        <h6 class="fw-bold mb-3"><i class="far fa-clock me-2 text-#344a57;"></i>Working Hours</h6>
+                        <p class="text-muted small">Sun - Thu: 09:00 AM - 06:00 PM<br>Fri - Sat: Closed</p>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input id="email" class="form-input" type="email" placeholder="obay@example.com" required>
-                </div>
+                <div class="col-lg-7 form-section text-end">
+                    <div class="top-image-container d-none d-lg-block">
+                        <img src="../images/web photo/about.avif" alt="Support">
+                    </div>
 
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <select id="subject" class="form-input">
-                        <option value="">Select a topic...</option>
-                        <option>Booking Inquiry</option>
-                        <option>Destination Information</option>
-                        <option>Payment & Pricing</option>
-                        <option>Technical Support</option>
-                        <option>Feedback</option>
-                        <option>Other</option>
-                    </select>
-                </div>
+                    <div class="contact-card-floating text-start">
+                        <h5 class="fw-bold mb-4">Send Us a Message</h5>
+                        <form>
+                            <div class="input-group-custom">
+                                <i class="fas fa-user"></i>
+                                <input type="text" class="form-control-custom" placeholder="Full Name">
+                            </div>
 
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" class="form-input" placeholder="Tell us how we can help..."
-                        required></textarea>
-                </div>
+                            <div class="input-group-custom">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" class="form-control-custom" placeholder="Email Address">
+                            </div>
 
-                <button type="submit" class="submit-btn">
-                    <i class="bi bi-send-fill"></i>
-                    Send Message
-                </button>
-            </form>
+                            <div class="input-group-custom">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" class="form-control-custom" placeholder="Phone Number">
+                            </div>
+
+                            <div class="input-group-custom">
+                                <i class="fas fa-tag"></i>
+                                <select class="form-control-custom">
+                                    <option selected disabled>Select Subject</option>
+                                    <option>General Inquiry</option>
+                                    <option>Booking Support</option>
+                                </select>
+                            </div>
+
+                            <textarea class="form-control-custom mb-3" rows="4"
+                                placeholder="How can we help you?"></textarea>
+
+                            <button type="submit" class="btn-submit">
+                                Send Message <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-bar">
+                <div class="row g-0">
+                    <div class="col-lg-4 feature-item">
+                        <i class="bi bi-shield-fill" style="color: #344a57;"></i>
+                        <strong>Secure Booking</strong>
+                        <small class="text-muted d-block">Your data is always protected</small>
+                    </div>
+                    <div class="col-lg-4 feature-item">
+                        <i class="bi bi-lightning-charge-fill" style="color: #344a60;"></i>
+                        <strong>Fast Response</strong>
+                        <small class="text-muted d-block">We reply within 24 hours</small>
+                    </div>
+                    <div class="col-lg-4 feature-item">
+                        <i class="bi bi-clock" style="color: #344a70;"></i>
+                        <strong>24/7 Support</strong>
+                        <small class="text-muted d-block">Ready to assist you anytime</small>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
 
-    <!-- FAQ -->
-    <div class="faq-section">
-        <h2 class="faq-title">Frequently Asked <span>Questions</span></h2>
-
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-                How do I book a trip through Qatta Travel?
-                <i class="bi bi-chevron-down arrow"></i>
-            </div>
-            <div class="faq-a">Simply browse our Destinations or Apartments page, choose what you like, and click "Book
-                Now." You'll be guided through a quick, secure checkout process.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-                Can I cancel or modify my booking?
-                <i class="bi bi-chevron-down arrow"></i>
-            </div>
-            <div class="faq-a">Yes! You can manage all your bookings from the "My Tickets" section in your profile.
-                Cancellations are free up to 48 hours before your check-in date.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-                What payment methods are accepted?
-                <i class="bi bi-chevron-down arrow"></i>
-            </div>
-            <div class="faq-a">We accept Visa, Mastercard, Apple Pay, and Google Pay. All transactions are encrypted and
-                secure.</div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-                Do I need a visa to visit Qatar?
-                <i class="bi bi-chevron-down arrow"></i>
-            </div>
-            <div class="faq-a">Citizens of over 95 countries can enter Qatar visa-free. For others, we recommend
-                checking the official Qatar eVisa portal. We can assist with guidance upon request.</div>
-        </div>
-
-    </div>
-
-    <!-- Toast -->
-    <div class="toast-success" id="toast">
-        <i class="bi bi-check-circle-fill fs-5"></i>
-        <span>Message sent! We'll be in touch within 24 hours.</span>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            e.target.reset();
-            setTimeout(() => toast.classList.remove('show'), 4000);
-        }
-
-        function toggleFaq(el) {
-            const item = el.parentElement;
-            const isOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-            if (!isOpen) item.classList.add('open');
-        }
-    </script>
 </body>
 
 </html>
