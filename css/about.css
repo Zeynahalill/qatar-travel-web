@@ -18,7 +18,6 @@ body {
     background-image: url("../images/Gemini_Generated_Image_7ouzrq7ouzrq7ouz.png"); 
     background-size: cover; 
     background-position: center; 
-    border-radius: 120px 0 0 120px; 
 }
 .about-hero::before { 
     content: ""; 
@@ -44,6 +43,7 @@ body {
 .about-hero .row { /* ⭐ */
     position: relative; /* ⭐ */
     z-index: 1; /* ⭐ */
+    
 }
 
 
@@ -246,4 +246,28 @@ body {
 .feature-card * {
     position: relative;
     z-index: 1;
+}
+/* Who We Are arka planı */
+.row.who-we-are {
+    position: relative; /* içerik üstte kalması için */
+    background-image: url('../images/Gemini_Generated_Image_k0x2kik0x2kik0x2.png'); /* arka plan görselin */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 30px; /* içerik ile görsel arası boşluk */
+    overflow: hidden;
+}
+
+/* içerik üstte kalsın */
+.row.who-we-are > .col-md-6 {
+    position: relative;
+    z-index: 1;
+}
+
+/* isteğe bağlı: yarı şeffaf overlay */
+.row.who-we-are::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+   
+    z-index: 0;
 }
