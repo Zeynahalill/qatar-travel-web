@@ -1,0 +1,273 @@
+:root {
+    --bg-color: #f7f1eb; /* Açık mermer/bej tonu */
+    --accent-color: #c5a992; /* Altın/Yıldız tonu */
+    --text-dark: #333;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    /* Görseldeki mermer efektini vermek için hafif bir gradient */
+    background-image: radial-gradient(circle at 10% 20%, rgba(239, 232, 222, 0.5) 0%, rgba(247, 241, 235, 1) 90%);
+    color: var(--text-dark);
+       overflow-x: hidden;
+}
+
+.about-hero { 
+    height: 400px;
+    background-image: url("../images/Gemini_Generated_Image_7ouzrq7ouzrq7ouz.png"); 
+    background-size: cover; 
+    background-position: center; 
+}
+.about-hero::before { 
+    content: ""; 
+    position: absolute; 
+    top: 50%;
+    left: 60%; 
+    transform: translate(-50%, -50%); 
+    width: 600px; 
+    height: 400px; 
+
+ background: radial-gradient( 
+        circle,
+        rgba(197, 169, 146, 0.35),
+        rgba(255, 255, 255, 0.05)
+    );
+
+    filter: blur(60px);
+    border-radius: 50px; 
+    z-index: 0; 
+}
+
+/* içerik üstte kalsın */
+.about-hero .row { /* ⭐ */
+    position: relative; /* ⭐ */
+    z-index: 1; /* ⭐ */
+    
+}
+
+
+
+.serif-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+}
+.text-muted {
+    font-size: 0.85rem;
+}
+.text-box {
+    max-width: 400px;
+    /* margin-left: auto;  */
+    padding-left: 40px;
+}
+.small-text {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #474747;
+}
+
+.btn-dark-custom {
+    background-color: #4a5d5e;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    border: none;
+}
+
+.btn-dark-custom:hover {
+    background-color: #384849;
+    color: white;
+}
+
+.rounded-custom {
+    border-radius: 15px;
+}
+
+.rounded-top-custom {
+    border-radius: 120px 0 0 120px; /* Üstten kavisli görünüm */
+}
+
+/* Kart Tasarımları */
+.team-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.team-card h5 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 5px;
+}
+
+.role {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.stars {
+    color: var(--accent-color);
+    letter-spacing: 2px;
+}
+
+/* Başlık Çizgileri */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-divider .line {
+    height: 1px;
+    width: 50px;
+    background-color: #ccc;
+}
+
+/* Quote Bölümü */
+.quote-box {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    max-width: 800px;
+    position: relative;
+}
+
+.quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #444;
+}
+
+.quote-mark {
+    font-size: 3rem;
+    color: #ddd;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.team-card img {
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover img {
+    transform: scale(1.1);
+}
+
+.stat-card {
+    background: #f8f5f2;
+    border-radius: 15px;
+     padding: 25px; 
+     position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: translateY(-5px) scale(1.02);
+}
+
+.stat-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.stat-card p {
+    color: #777;
+}
+
+.feature-card {
+    background: #f8f5f2;
+    border-radius: 15px;
+     padding: 25px; 
+     position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: translateY(-5px) scale(1.02);
+}
+
+.feature-card h5 {
+    font-weight: 600;
+}
+
+.feature-card p {
+    font-size: 14px;
+    color: #777;
+}
+.stat-card::before,
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 15px;
+    background: linear-gradient(
+        120deg,
+        #eaff4c,
+        #dfba00,
+        #fffadb,
+        #fff200
+    );
+    opacity: 0;
+    filter: blur(25px);
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+.stat-card:hover::before,
+.feature-card:hover::before {
+    opacity: 1;
+}
+
+/* içeriği üstte tut */
+.stat-card *,
+.feature-card * {
+    position: relative;
+    z-index: 1;
+}
+/* Who We Are arka planı */
+.row.who-we-are {
+    position: relative; /* içerik üstte kalması için */
+    background-image: url('../images/Gemini_Generated_Image_k0x2kik0x2kik0x2.png'); /* arka plan görselin */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 30px; /* içerik ile görsel arası boşluk */
+    overflow: hidden;
+}
+
+/* içerik üstte kalsın */
+.row.who-we-are > .col-md-6 {
+    position: relative;
+    z-index: 1;
+}
+
+/* isteğe bağlı: yarı şeffaf overlay */
+.row.who-we-are::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+   
+    z-index: 0;
+}

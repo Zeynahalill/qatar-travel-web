@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Apartments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333; /*#741313*/
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card img {
+            border-radius: 20px 20px 0 0;
+            height: 200px;
+            object-fit: cover;
+        }
+        .btn-view {
+            background-color: #6e1035; /*#1a3a3a*/
+            color: white;
+            border-radius: 25px;
+            padding: 5px 15px;
+            font-size: 0.8rem;
+        }
+
+        .why-choose-us img {
+            border-radius: 30px;
+            width: 100%;
+        }
+        .icon-box i {
+            font-size: 1.5rem;
+            color: #6e1035; /*#1a3a3a*/
+            margin-right: 15px;
+        }
+
+        .contact-bar {
+            background-color: #6e1035;
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+        }
+        .btn-contact {
+            background-color: #ba1b5a;
+            color: white;
+            border-radius: 25px;
+            padding: 10px 25px;
+            border: none;
+        }
+
+        .qatar-section {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('../images/qatar.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 30px;
+            color: white;
+            padding: 100px 50px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    
+   <div class="text-center mb-5">
+    <h2 class="fw-bold">Explore Apartments</h2>
+</div>
+
+<div class="row g-4 mb-5">
+    
+    <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm h-100">
+            <img src="../images/four seasons hotel.jpg" alt="Hotel">
+            <div class="card-body">
+                <h6 class="fw-bold mb-1">Four Seasons Hotel</h6>
+                <p class="text-muted small mb-3"><i class="bi bi-geo-alt"></i> Qatar, Doha</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">From $250</span>
+                    <button class="btn btn-view">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm h-100">
+            <img src="../images/marsa malaz.avif" alt="Apartment">
+            <div class="card-body">
+                <h6 class="fw-bold mb-1">Marsa Malaz Kempinski</h6>
+                <p class="text-muted small mb-3"><i class="bi bi-geo-alt"></i> Qatar, Doha</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">From $250</span>
+                    <button class="btn btn-view">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm h-100">
+            <img src="../images/luxury apartment.jpg" alt="Apartment">
+            <div class="card-body">
+                <h6 class="fw-bold mb-1">Luxury Apartment</h6>
+                <p class="text-muted small mb-3"><i class="bi bi-geo-alt"></i> Qatar, Doha</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">From $220</span>
+                    <button class="btn btn-view">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 col-sm-6">
+        <div class="card shadow-sm h-100">
+            <img src="../images/luxury pentthouse.jpg" alt="Apartment">
+            <div class="card-body">
+                <h6 class="fw-bold mb-1">Luxury Penthouse</h6>
+                <p class="text-muted small mb-3"><i class="bi bi-geo-alt"></i> Qatar, Doha</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">From $450</span>
+                    <button class="btn btn-view">View Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <hr class="my-5">
+
+    <div class="row align-items-center why-choose-us mb-5">
+        <div class="col-md-6">
+            <h2 class="fw-bold mb-4">Why Choose Us?</h2>
+            <p class="text-muted mb-4">Discover the reasons why our customers love booking with us. We strive to provide the best experience possible.</p>
+            
+            <div class="d-flex icon-box mb-3">
+                <i class="bi bi-award"></i>
+                <div>
+                    <h6 class="fw-bold">Best Selection</h6>
+                    <p class="small text-muted">Handpicked apartments and hotels situated in the most prestigious and high-quality areas.</p>
+                </div>
+            </div>
+            
+            <div class="d-flex icon-box mb-3">
+                <i class="bi bi-tag"></i>
+                <div>
+                    <h6 class="fw-bold">Competitive Prices</h6>
+                    <p class="small text-muted">Affordable rates and exclusive deals you won't find elsewhere.</p>
+                </div>
+            </div>
+
+            <div class="d-flex icon-box">
+                <i class="bi bi-headset"></i>
+                <div>
+                    <h6 class="fw-bold">24/7 Support</h6>
+                    <p class="small text-muted">Our team is here to assist you at any time, day or night.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="../images/people.jpg" alt="Support lady">
+        </div>
+    </div>
+
+    <div class="contact-bar d-md-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h4 class="fw-bold mb-1"><i class="bi bi-chat-dots me-2"></i> Contact Us Today</h4>
+            <p class="mb-0 opacity-75">Ready to find your dream apartment? Get in touch with our team.</p>
+        </div>
+        <button class="btn btn-contact mt-3 mt-md-0">Get In Touch <i class="bi bi-arrow-right ms-2"></i></button>
+    </div>
+
+    <div class="qatar-section shadow">
+        <div class="col-md-7">
+            <h1 class="fw-bold">Explore Qatar Experiences</h1>
+            <p class="lead">Discover more than just a place to stay. Experience the culture, luxury, and lifestyle of Qatar.</p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

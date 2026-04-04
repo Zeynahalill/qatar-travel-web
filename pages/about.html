@@ -1,333 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Premium Design</title>
+    <title>Qatar Luxury Living</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-    <style>
-        :root {
-            --primary-green: #344a57;
-            --dark-blue: #344a60;
-            --soft-bg: #f8f1e7;
-            --accent-color: #344a70;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f8f1e7 0%, #ffffff 100%);
-            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 40px 0;
-        }
-
-        .page-wrapper {
-            background-color: #ffffff;
-            max-width: 1100px;
-            margin: auto;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .info-section {
-            padding: 60px;
-            background: #fff;
-        }
-
-        .main-title {
-            font-size: 38px;
-            font-weight: 800;
-            color: var(--dark-blue);
-            letter-spacing: -1px;
-        }
-
-        .subtitle-text {
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateX(10px);
-        }
-
-        .contact-item .icon-box {
-            width: 45px;
-            height: 45px;
-            background: #f0f7f0;
-            color: var(--primary-green);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 18px;
-        }
-
-        .social-icons-left {
-            margin-top: 40px;
-        }
-
-        .social-icons-left a {
-            width: 40px;
-            height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #f5f5f5;
-            color: #555;
-            border-radius: 50%;
-            margin-right: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-icons-left a:hover {
-            background: var(--primary-green);
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        .form-section {
-            background-color: #fafafa;
-            padding: 0;
-            position: relative;
-        }
-
-        .top-image-container img {
-            width: 85%;
-            height: 280px;
-            object-fit: cover;
-            border-bottom-left-radius: 150px;
-            box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-card-floating {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
-            position: relative;
-            z-index: 10;
-            width: 90%;
-            margin: -100px auto 40px auto;
-        }
-
-        .input-group-custom {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .input-group-custom i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        .form-control-custom {
-            width: 100%;
-            padding: 14px 15px 14px 45px;
-            border: 1.5px solid #eee;
-            border-radius: 12px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .form-control-custom:focus {
-            outline: none;
-            border-color: var(--primary-green);
-            background: #f9fff9;
-        }
-
-        .btn-submit {
-            background: var(--dark-blue);
-            color: white;
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-submit:hover {
-            background: var(--primary-green);
-            box-shadow: 0 10px 20px rgba(46, 125, 50, 0.2);
-        }
-
-        .features-bar {
-            background: #fdfdfd;
-            border-top: 1px solid #f0f0f0;
-            padding: 35px 0;
-        }
-
-        .feature-item {
-            text-align: center;
-            border-right: 1px solid #eee;
-        }
-
-        .feature-item:last-child {
-            border: none;
-        }
-
-        .feature-item i {
-            font-size: 32px;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        @media (max-width: 991px) {
-            .feature-item {
-                border-right: none;
-                margin-bottom: 30px;
-            }
-
-            .info-section {
-                padding: 40px 20px;
-            }
-
-            .top-image-container img {
-                width: 100%;
-                border-radius: 0;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="../css/about.css">
 </head>
-
 <body>
+<section class="container-fluid py-5 px-0 about-hero"<img src="../images/Gemini_Generated_Image_7ouzrq7ouzrq7ouz.png">
+<div class="main-wrapper">
+    <section class="container-fluid py-5 px-0">
+    <div class="row align-items-center g-0">
 
-    <div class="container">
-        <div class="page-wrapper">
-            <div class="row g-0">
-                <div class="col-lg-5 info-section">
-                    <h1 class="main-title">Contact Us</h1>
-                    <p class="subtitle-text">We're here to help you find your perfect stay in Qatar. Our team is
-                        available to answer all your questions.</p>
+        <!-- TEXT -->
+        <div class="col-md-5">
+            <div class="text-box">
+                <h2 class="serif-title">About Us</h2>
+                <p class="text-muted">
+                    We redefine luxury living and travel experiences in Qatar.
+                </p>
+            </div>
+        </div>
 
-                    <div class="contact-item">
-                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
-                        <div>
-                            <small class="d-block text-muted">Call us</small>
-                            <strong>+974 1234 5678</strong>
-                        </div>
-                    </div>
+        <!-- IMAGE -->
+       
 
-                    <div class="contact-item">
-                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
-                        <div>
-                            <small class="d-block text-muted">Email us</small>
-                            <strong>info@qatarstays.com</strong>
-                        </div>
-                    </div>
+    </div>
+</section>
+</section>
+    <section class="container-fluid py-5 px-0">
+        <div class="row align-items-center flex-column-reverse flex-md-row">
+            <div class="row align-items-center flex-column-reverse flex-md-row who-we-are">
+            <div class="col-md-6 pe-md-5">
+                <h2 class="serif-title">Who We Are</h2>
+                <p class="small-text">We are a Qatar-based platform dedicated to offering premium apartments and unforgettable travel experiences. With a commitment to luxury, quality, and service, our curated selection of apartments in Qatar's most sought-after locations ensures an unparalleled living experience. Our mission is to provide our clients with a unique blend of comfort, elegance, and authentic Qatari hospitality.</p>
+                <a href="#" class="btn btn-dark-custom mt-3">CONTACT US</a>
+            </div>
+            <div class="col-md-6">
+                <img src="../images/Gemini_Generated_Image_ktbkc1ktbkc1ktbk.png" class="img-fluid rounded-custom shadow-sm" alt="Qatar View">
+            </div>
+        </div>
+        </div>
+    </section>
 
-                    <div class="contact-item">
-                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                        <div>
-                            <small class="d-block text-muted">Visit us</small>
-                            <strong>West Bay, Doha, Qatar</strong>
-                        </div>
-                    </div>
-
-                    <div class="social-icons-left">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-
-                    <div class="mt-5">
-                        <h6 class="fw-bold mb-3"><i class="far fa-clock me-2 text-#344a57;"></i>Working Hours</h6>
-                        <p class="text-muted small">Sun - Thu: 09:00 AM - 06:00 PM<br>Fri - Sat: Closed</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-7 form-section text-end">
-                    <div class="top-image-container d-none d-lg-block">
-                        <img src="../images/web photo/about.avif" alt="Support">
-                    </div>
-
-                    <div class="contact-card-floating text-start">
-                        <h5 class="fw-bold mb-4">Send Us a Message</h5>
-                        <form>
-                            <div class="input-group-custom">
-                                <i class="fas fa-user"></i>
-                                <input type="text" class="form-control-custom" placeholder="Full Name">
-                            </div>
-
-                            <div class="input-group-custom">
-                                <i class="fas fa-envelope"></i>
-                                <input type="email" class="form-control-custom" placeholder="Email Address">
-                            </div>
-
-                            <div class="input-group-custom">
-                                <i class="fas fa-phone"></i>
-                                <input type="tel" class="form-control-custom" placeholder="Phone Number">
-                            </div>
-
-                            <div class="input-group-custom">
-                                <i class="fas fa-tag"></i>
-                                <select class="form-control-custom">
-                                    <option selected disabled>Select Subject</option>
-                                    <option>General Inquiry</option>
-                                    <option>Booking Support</option>
-                                </select>
-                            </div>
-
-                            <textarea class="form-control-custom mb-3" rows="4"
-                                placeholder="How can we help you?"></textarea>
-
-                            <button type="submit" class="btn-submit">
-                                Send Message <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
+    <section class="container py-5 text-center">
+        <div class="section-divider">
+            <span class="line"></span>
+            <h2 class="serif-title d-inline-block px-3">Why Choose Us</h2>
+            <span class="line"></span>
+        </div>
+        
+        <div class="row mt-5">
+            <div class="col-md-4 mb-4">
+                <div class="team-card">
+                    <img src="../images/Gemini_Generated_Image_t93qust93qust93q.png" alt="Saad">
+                    <div class="p-3">
+                        <h5>Saad Al-Mansoori</h5>
+                        <p class="role">CEO & Founder</p>
+                        <div class="stars">★★★★★</div>
                     </div>
                 </div>
             </div>
-
-            <div class="features-bar">
-                <div class="row g-0">
-                    <div class="col-lg-4 feature-item">
-                        <i class="bi bi-shield-fill" style="color: #344a57;"></i>
-                        <strong>Secure Booking</strong>
-                        <small class="text-muted d-block">Your data is always protected</small>
+            <div class="col-md-4 mb-4">
+                <div class="team-card">
+                    <img src="../images/Gemini_Generated_Image_8dts4e8dts4e8dts.png" alt="Amina">
+                    <div class="p-3">
+                        <h5>Amina Rahman</h5>
+                        <p class="role">Support Manager</p>
+                        <div class="stars">★★★★★</div>
                     </div>
-                    <div class="col-lg-4 feature-item">
-                        <i class="bi bi-lightning-charge-fill" style="color: #344a60;"></i>
-                        <strong>Fast Response</strong>
-                        <small class="text-muted d-block">We reply within 24 hours</small>
-                    </div>
-                    <div class="col-lg-4 feature-item">
-                        <i class="bi bi-clock" style="color: #344a70;"></i>
-                        <strong>24/7 Support</strong>
-                        <small class="text-muted d-block">Ready to assist you anytime</small>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="team-card">
+                    <img src="../images/Gemini_Generated_Image_k1okx3k1okx3k1ok.png" alt="Faisal">
+                    <div class="p-3">
+                        <h5>Faisal Al-Thani</h5>
+                        <p class="role">Travel Expert</p>
+                        <div class="stars">★★★★★</div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+
+
+   <section class="py-5 text-center">
+    <div class="container">
+
+        <!-- STAT ROW -->
+        <div class="row mt-5">
+
+            <div class="col-md-4 mb-4">
+                <div class="stat-card">
+                    <h3>500+</h3>
+                    <p>Luxury Apartments</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="stat-card">
+                    <h3>2,000+</h3>
+                    <p>Happy Clients</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="stat-card">
+                    <h3>4.9/5</h3>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FEATURE ROW -->
+        <div class="row mt-4">
+
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <h5>Prime Destinations</h5>
+                    <p>Best locations in Qatar.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <h5>Best Price</h5>
+                    <p>Guaranteed value.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="feature-card">
+                    <h5>24/7 Support</h5>
+                    <p>Always with you.</p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
+</section>
 
+
+
+    <section class="container py-5 text-center">
+        <div class="section-divider mb-4">
+            <span class="line"></span>
+            <h2 class="serif-title d-inline-block px-3">Meet Our Team</h2>
+            <span class="line"></span>
+        </div>
+        <div class="quote-box p-4 shadow-sm mx-auto">
+            <p class="quote-text">
+                <span class="quote-mark">“</span> 
+                To make Qatar not just a destination, <em>but a lifestyle experience.</em>
+                <span class="quote-mark">”</span>
+            </p>
+        </div>
+    </section>
+</div>
+<div class="col-md-4 mb-4 reveal"></div>
+<script src="../js/about.js"></script>
 </body>
-
+</html>
+</body>
 </html>
