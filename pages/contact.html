@@ -218,7 +218,9 @@
 
 <body>
 
-    <div class="container">
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <div class="container">
         <div class="page-wrapper">
             <div class="row g-0">
                 <div class="col-lg-5 info-section">
@@ -326,8 +328,169 @@
                 </div>
             </div>
         </div>
-    </div>
 
+
+      </div> <!-- /smooth-content -->
+    </div> <!-- /smooth-wrapper -->
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://assets.codepen.io/16327/ScrollSmoother.min.js"></script>
+
+    <script>
+        // GSAP Requested Code
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+        // create the smooth scroller FIRST!
+        let smoother = ScrollSmoother.create({
+          smooth: 2,
+          effects: true,
+          normalizeScroll: true
+        });
+
+        // Split text helper to animate words individually
+        function splitText(selector) {
+            const el = document.querySelector(selector);
+            if(!el) return [];
+            const text = el.innerText;
+            el.innerHTML = '';
+            const words = [];
+            text.split(' ').forEach(word => {
+                const span = document.createElement('span');
+                span.innerText = word + ' ';
+                span.style.display = 'inline-block';
+                el.appendChild(span);
+                words.push(span);
+            });
+            return words;
+        }
+
+        const titleWords = splitText('.main-title');
+        const subtitleWords = splitText('.subtitle-text');
+
+        // Awesome Entrance Animations
+        const tl = gsap.timeline();
+
+        // 1. Reveal page wrapper smoothly
+        tl.from(".page-wrapper", {
+            y: 40,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        })
+        // 2. Animate title words jumping in gracefully
+        .from(titleWords, {
+            y: 30,
+            opacity: 0,
+            rotationX: -90,
+            transformOrigin: "0% 100%",
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "back.out(2)"
+        }, "-=0.5")
+        // 3. Fade in subtitle words sequentially
+        .from(subtitleWords, {
+            y: 10,
+            opacity: 0,
+            stagger: 0.02,
+            duration: 0.5,
+            ease: "power2.out"
+        }, "-=0.4")
+        // 4. Slide in the working hours (.mt-5)
+        .from(".info-section .mt-5", {
+            x: -30,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.out"
+        }, "-=0.5")
+        // 3. Pop in contact items
+        .from(".contact-item", {
+            x: -30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "back.out(1.5)"
+        }, "-=0.4")
+        // 4. Pop in social icons
+        .from(".social-icons-left a", {
+            scale: 0,
+            opacity: 0,
+            duration: 0.4,
+            stagger: 0.1,
+            ease: "back.out(2)"
+        }, "-=0.2")
+        // 5. Slide up the actual contact form box
+        .from(".contact-card-floating", {
+            y: 60,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        }, "-=1.2")
+        // 6. Fade in features at the bottom
+        .from(".feature-item", {
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out"
+        }, "-=0.5");
+
+        // Add fun JS interactive animations for icons on mouse over
+        document.querySelectorAll('.icon-box i').forEach(icon => {
+            icon.parentElement.addEventListener('mouseenter', () => {
+                gsap.to(icon, { rotation: 15, scale: 1.2, duration: 0.3, ease: "back.out(2)" });
+            });
+            icon.parentElement.addEventListener('mouseleave', () => {
+                gsap.to(icon, { rotation: 0, scale: 1, duration: 0.3, ease: "power1.out" });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form');
+            const submitBtn = document.querySelector('.btn-submit');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Basic validation (ensure at least name and email are filled)
+                const inputs = form.querySelectorAll('input');
+                let isValid = true;
+                inputs.forEach(input => {
+                    if (!input.value.trim() && input.type !== 'tel') {
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    alert('Please fill out all required fields.');
+                    return;
+                }
+
+                // Show loading state
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = 'Sending <i class="fas fa-spinner fa-spin ms-2"></i>';
+                submitBtn.disabled = true;
+
+                // Simulate network request
+                setTimeout(() => {
+                    submitBtn.innerHTML = 'Message Sent! <i class="fas fa-check ms-2"></i>';
+                    submitBtn.style.backgroundColor = '#2e7d32'; // Success green
+                    
+                    form.reset();
+
+                    // Restore button state after 3 seconds
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.style.backgroundColor = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, 1500);
+            });
+        });
+    </script>
 </body>
 
 </html>
